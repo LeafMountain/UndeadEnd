@@ -39,9 +39,9 @@ public class PlayerController : MonoBehaviour {
 	void Look(){
 		Vector3 input = Vector3.zero;
 
-		if(!useMouse){
+		if(!useMouse) {
 			input += new Vector3(Input.GetAxisRaw(horizontalInput), 0, Input.GetAxisRaw(verticalInput)).normalized;
-		} else{
+		} else {
 			Vector3 mousePosition = viewCamera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, viewCamera.transform.position.y));
 			input += (mousePosition + Vector3.up * rotator.transform.position.y).normalized;
 			input.y = 0;

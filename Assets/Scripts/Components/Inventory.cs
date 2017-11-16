@@ -9,17 +9,16 @@ public class Inventory : MonoBehaviour {
 	public float force;
 
 	public GameObject testBullet;
+	public Transform bulletOrigin;
 
 	void Update () {
-		if(Input.GetButtonDown("Fire1")){
+		if(Input.GetButtonDown("RightTrigger")){
 			Shoot();
 		}
 	}
 
 	void Shoot(){
 		Ray ray = new Ray(transform.position, transform.forward);
-		GameObject bullet = Instantiate(testBullet, transform.position, Quaternion.identity);
-		bullet.transform.rotation = transform.rotation;
-		bullet.GetComponent<Bullet>().Init(damage, speed, force);
+		GameObject bullet = Instantiate(testBullet, bulletOrigin.position, bulletOrigin.rotation);
 	}
 }
