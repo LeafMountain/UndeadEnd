@@ -213,48 +213,34 @@ MonoBehaviour:
   target: {fileID: 1109427417}
   cameraHeight: 15
   cameraAngle: 70
---- !u!1001 &334928804
-Prefab:
+--- !u!1 &253479579
+GameObject:
   m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4894938308790196, guid: 8fde21b6ee8473d4fa2db860fdd9e25e, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4894938308790196, guid: 8fde21b6ee8473d4fa2db860fdd9e25e, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4894938308790196, guid: 8fde21b6ee8473d4fa2db860fdd9e25e, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4894938308790196, guid: 8fde21b6ee8473d4fa2db860fdd9e25e, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4894938308790196, guid: 8fde21b6ee8473d4fa2db860fdd9e25e, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4894938308790196, guid: 8fde21b6ee8473d4fa2db860fdd9e25e, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4894938308790196, guid: 8fde21b6ee8473d4fa2db860fdd9e25e, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4894938308790196, guid: 8fde21b6ee8473d4fa2db860fdd9e25e, type: 2}
-      propertyPath: m_RootOrder
-      value: 9
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 8fde21b6ee8473d4fa2db860fdd9e25e, type: 2}
-  m_IsPrefabParent: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 253479580}
+  m_Layer: 0
+  m_Name: BulletOrigin
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &253479580
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 253479579}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1109427417}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &443507349
 GameObject:
   m_ObjectHideFlags: 0
@@ -806,6 +792,7 @@ Transform:
   - {fileID: 1489704564}
   - {fileID: 443507350}
   - {fileID: 1477741644}
+  - {fileID: 253479580}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -872,9 +859,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  speed: 1
+  speed: 0.01
   force: 1
   testBullet: {fileID: 1376910079835240, guid: 8fde21b6ee8473d4fa2db860fdd9e25e, type: 2}
+  bulletOrigin: {fileID: 253479580}
 --- !u!1001 &1125683646
 Prefab:
   m_ObjectHideFlags: 0
@@ -1094,43 +1082,11 @@ Transform:
   m_Father: {fileID: 1109427417}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1489007950 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1095638358044972, guid: 88be72f5bd0e4214c8038a6345ad3f52,
-    type: 2}
-  m_PrefabInternal: {fileID: 769451647}
 --- !u!4 &1489007951 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4326243582310156, guid: 88be72f5bd0e4214c8038a6345ad3f52,
     type: 2}
   m_PrefabInternal: {fileID: 769451647}
---- !u!114 &1489007955
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1489007950}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 460313828068c2b40838ca99788ef819, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 3
-  OnDamaged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  OnHealed:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  OnNoHealth:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
 --- !u!1 &1489704563
 GameObject:
   m_ObjectHideFlags: 0
@@ -1215,49 +1171,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1489704563}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1702413043 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1376910079835240, guid: 8fde21b6ee8473d4fa2db860fdd9e25e,
-    type: 2}
-  m_PrefabInternal: {fileID: 334928804}
---- !u!114 &1702413044 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114171684076406040, guid: 8fde21b6ee8473d4fa2db860fdd9e25e,
-    type: 2}
-  m_PrefabInternal: {fileID: 334928804}
-  m_Script: {fileID: 11500000, guid: 2044656f26d98b348a9d7d95311e3aef, type: 3}
---- !u!114 &1702413049
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1702413043}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9283586832fee3943a524e17a79bbc68, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OnTriggerEntered:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1702413044}
-        m_MethodName: Hit
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: UnityTriggerEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  OnTriggerExited:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityTriggerEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
 --- !u!1001 &1722183615
 Prefab:
   m_ObjectHideFlags: 0
