@@ -17,7 +17,7 @@ public class Mover : MonoBehaviour {
 	CharacterController controller;
 
 	Vector3 velocity;
-	public float Velocity { get{ return velocity.magnitude; } }
+	public float Velocity { get{ return controller.velocity.magnitude; } }
 
 	[HideInInspector]
 	public float currentSpeedPercentage;
