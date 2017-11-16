@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 137291697786164688}
   - component: {fileID: 136743022681906516}
   - component: {fileID: 114602319272018916}
+  - component: {fileID: 114604050947979800}
   m_Layer: 8
   m_Name: mod_char_skeleton
   m_TagString: Untagged
@@ -80,7 +81,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1095638358044972}
   m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
-  m_LocalPosition: {x: 1, y: 0, z: 18}
+  m_LocalPosition: {x: 2, y: 0, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4138049683035810}
@@ -142,9 +143,31 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   OnNoHealth:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 114604050947979800}
+        m_MethodName: Kill
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &114604050947979800
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1095638358044972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2f251211f3c38840966708544cfaa7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!136 &136743022681906516
 CapsuleCollider:
   m_ObjectHideFlags: 1

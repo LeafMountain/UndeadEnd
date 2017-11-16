@@ -29,6 +29,7 @@ GameObject:
   - component: {fileID: 114831078319685612}
   - component: {fileID: 114702531885822026}
   - component: {fileID: 114671442447314792}
+  - component: {fileID: 114980812997881808}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -353,7 +354,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52d847a86757a4f4dac25f67214b63d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  useMouse: 0
+  useMouse: 1
   horizontalInput: LookHorizontal
   verticalInput: LookVertical
 --- !u!114 &114637073676522876
@@ -464,6 +465,20 @@ MonoBehaviour:
   normalSpeed: 0.1
   sprintSpeed: 0.2
   currentSpeedPercentage: 0
+--- !u!114 &114980812997881808
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1146904742983320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3fe6b80d057fc245b908f0629cfa386, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  yOffset: 0.1
+  distanceToGround: 0.5
+  gravity: -30
 --- !u!143 &143223570802644664
 CharacterController:
   m_ObjectHideFlags: 1
