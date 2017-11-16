@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311992, g: 0.38074034, b: 0.35872713, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -171,7 +171,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 0
-  orthographic size: 5
+  orthographic size: 17.05
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -213,6 +213,48 @@ MonoBehaviour:
   target: {fileID: 1109427417}
   cameraHeight: 15
   cameraAngle: 70
+--- !u!1001 &334928804
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4894938308790196, guid: 8fde21b6ee8473d4fa2db860fdd9e25e, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4894938308790196, guid: 8fde21b6ee8473d4fa2db860fdd9e25e, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4894938308790196, guid: 8fde21b6ee8473d4fa2db860fdd9e25e, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4894938308790196, guid: 8fde21b6ee8473d4fa2db860fdd9e25e, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4894938308790196, guid: 8fde21b6ee8473d4fa2db860fdd9e25e, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4894938308790196, guid: 8fde21b6ee8473d4fa2db860fdd9e25e, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4894938308790196, guid: 8fde21b6ee8473d4fa2db860fdd9e25e, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4894938308790196, guid: 8fde21b6ee8473d4fa2db860fdd9e25e, type: 2}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 8fde21b6ee8473d4fa2db860fdd9e25e, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &443507349
 GameObject:
   m_ObjectHideFlags: 0
@@ -252,7 +294,7 @@ Light:
   serializedVersion: 8
   m_Type: 0
   m_Color: {r: 1, g: 0.93975663, b: 0.60294116, a: 1}
-  m_Intensity: 4
+  m_Intensity: 1
   m_Range: 7.46
   m_SpotAngle: 73.73092
   m_CookieSize: 10
@@ -316,10 +358,6 @@ Prefab:
     - target: {fileID: 4265556284642222, guid: d3d19320aa20b004fbbea08424a2852b, type: 2}
       propertyPath: m_RootOrder
       value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 4265556284642222, guid: d3d19320aa20b004fbbea08424a2852b, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: -90
       objectReference: {fileID: 0}
     - target: {fileID: 1478281299975008, guid: d3d19320aa20b004fbbea08424a2852b, type: 2}
       propertyPath: m_Name
@@ -634,6 +672,7 @@ GameObject:
   - component: {fileID: 1109427418}
   - component: {fileID: 1109427419}
   - component: {fileID: 1109427420}
+  - component: {fileID: 1109427421}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -652,6 +691,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52d847a86757a4f4dac25f67214b63d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useMouse: 0
   horizontalInput: LookHorizontal
   verticalInput: LookVertical
 --- !u!114 &1109427412
@@ -760,7 +800,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1109427410}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.59, y: 1, z: 9.34}
+  m_LocalPosition: {x: 4, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1489704564}
@@ -781,7 +821,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radius: 10
-  viewAngle: 101
+  viewAngle: 78
   obstacleMask:
     serializedVersion: 2
     m_Bits: 512
@@ -816,10 +856,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f17a40ed6bbc4244b838f72167873709, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  useViewAngle: 0
-  useViewRadius: 0
+  useViewAngle: 1
+  useViewRadius: 1
   light: {fileID: 443507351}
   lightToggle: 1
+--- !u!114 &1109427421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1109427410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 211df0aa6b2f0204d9e7e748aeaf9c95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1
+  speed: 1
+  force: 1
+  testBullet: {fileID: 1376910079835240, guid: 8fde21b6ee8473d4fa2db860fdd9e25e, type: 2}
 --- !u!1001 &1125683646
 Prefab:
   m_ObjectHideFlags: 0
@@ -1160,6 +1215,49 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1489704563}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1702413043 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1376910079835240, guid: 8fde21b6ee8473d4fa2db860fdd9e25e,
+    type: 2}
+  m_PrefabInternal: {fileID: 334928804}
+--- !u!114 &1702413044 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114171684076406040, guid: 8fde21b6ee8473d4fa2db860fdd9e25e,
+    type: 2}
+  m_PrefabInternal: {fileID: 334928804}
+  m_Script: {fileID: 11500000, guid: 2044656f26d98b348a9d7d95311e3aef, type: 3}
+--- !u!114 &1702413049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1702413043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9283586832fee3943a524e17a79bbc68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnTriggerEntered:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1702413044}
+        m_MethodName: Hit
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityTriggerEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  OnTriggerExited:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityTriggerEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!1001 &1722183615
 Prefab:
   m_ObjectHideFlags: 0
