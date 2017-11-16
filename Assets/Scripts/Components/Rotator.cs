@@ -9,6 +9,8 @@ public class Rotator : MonoBehaviour {
 			lookDirection += transform.position;
 		}
 
+		lookDirection.y = transform.position.y;
+
 		transform.LookAt(lookDirection);
 	}
 }
