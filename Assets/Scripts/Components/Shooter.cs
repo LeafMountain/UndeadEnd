@@ -10,6 +10,7 @@ public class Shooter : MonoBehaviour {
 
 	public UnityEvent OnShoot;
 	public UnityTriggerEvent OnHitTarget;
+	public UnityPositionEvent onHitPosition;
 
 	public void Shoot(){
 		Ray shootRay = new Ray(origin.position, transform.forward);
@@ -21,6 +22,8 @@ public class Shooter : MonoBehaviour {
 
 		OnShoot.Invoke();
 
+		onHitPosition.Invoke(hit.point);
+
 		if(hit.transform){
 			Collider col = hit.transform.GetComponent<Collider>();
 
@@ -30,3 +33,6 @@ public class Shooter : MonoBehaviour {
 		}
 	}
 }
+
+[System.Serializable]
+public class UnityPositionEvent : UnityEvent<Vector3> {}
