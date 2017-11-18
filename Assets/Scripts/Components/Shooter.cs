@@ -22,7 +22,7 @@ public class Shooter : MonoBehaviour {
 
 		OnShoot.Invoke();
 
-		onHitPosition.Invoke(hit.point);
+		onHitPosition.Invoke(shootRay.origin + shootRay.direction * range);
 
 		if(hit.transform){
 			Collider col = hit.transform.GetComponent<Collider>();

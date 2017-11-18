@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(CharacterController))]
 public class Mover : MonoBehaviour {
 
-	[Range(0.01f, .5f)]
+	[Range(0.01f, .3f)]
 	public float normalSpeed = .1f;
 	public float sprintSpeed = .2f;
 
