@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Killable : MonoBehaviour {
+public class Destroyable : MonoBehaviour {
 
-	public void Kill(){
+	public void Destroy(){
 		Destroy(gameObject);
 	}
 }

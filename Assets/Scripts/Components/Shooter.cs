@@ -12,6 +12,12 @@ public class Shooter : MonoBehaviour {
 	public UnityTriggerEvent OnHitTarget;
 	public UnityPositionEvent onHitPosition;
 
+	void Start(){
+		if(!origin){
+			origin = transform;
+		}
+	}
+
 	public void Shoot(){
 		Ray shootRay = new Ray(origin.position, transform.forward);
 		RaycastHit hit;

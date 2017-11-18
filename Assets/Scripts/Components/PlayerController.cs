@@ -33,7 +33,8 @@ public class PlayerController : MonoBehaviour {
 
 	void Move(){
 		if(mover){
-			Vector2 input = new Vector2(Input.GetAxisRaw(profile.horizontalMove), Input.GetAxisRaw(profile.verticalMove)).normalized;
+			Vector3 input = new Vector3(Input.GetAxisRaw(profile.horizontalMove),0, Input.GetAxisRaw(profile.verticalMove)).normalized;
+			
 			mover.Move(input);
 		}
 	}
