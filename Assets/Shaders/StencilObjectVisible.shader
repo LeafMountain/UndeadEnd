@@ -1,4 +1,4 @@
-﻿Shader "Custom/Stencil Object" {
+﻿Shader "Custom/Stencil Object (Visible)" {
 	Properties {
 		_Color ("Color", Color) = (1,1,1,1)
 		_MainTex ("Albedo (RGB)", 2D) = "white" {}
@@ -12,7 +12,7 @@
 		LOD 200
 
 		Stencil {
-			Ref 1
+			Ref 0
 			Comp equal
 		}
 		

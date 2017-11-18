@@ -18,8 +18,8 @@ public class FieldOfViewEditor : Editor {
 		Handles.DrawLine(fov.transform.position, fov.transform.position + angleA * fov.radius);
 		Handles.DrawLine(fov.transform.position, fov.transform.position + angleB * fov.radius);
 
-		// foreach(Transform target in fov.visibleTargets){
-		// 	Debug.DrawLine(fov.transform.position, target.position, Color.red);
-		// }
+		foreach(Transform target in fov.visibleTargets){
+			Debug.DrawLine(fov.transform.position, target.position, Color.red);
+		}
 	}
 }
