@@ -32,44 +32,48 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void Move(){
-		Vector2 input = new Vector2(Input.GetAxisRaw(profile.horizontalMove), Input.GetAxisRaw(profile.verticalMove)).normalized;
-		mover.Move(input);
+		if(mover){
+			Vector2 input = new Vector2(Input.GetAxisRaw(profile.horizontalMove), Input.GetAxisRaw(profile.verticalMove)).normalized;
+			mover.Move(input);
+		}
 	}
 
 	void Look(){
+		if(rotator){
 		Vector3 input = Vector3.zero;
 
-		if(!profile.useMouse) {
-			input += new Vector3(Input.GetAxisRaw(profile.horizontalLook), 0, Input.GetAxisRaw(profile.verticalLook)).normalized;
-		} else {
-			Vector3 mousePosition = Vector3.zero;;
-			Ray mouseRay = viewCamera.ScreenPointToRay(Input.mousePosition);
-			Debug.DrawRay(mouseRay.origin, mouseRay.direction * 100, Color.red);
-			RaycastHit hit;
+			if(!profile.useMouse) {
+				input += new Vector3(Input.GetAxisRaw(profile.horizontalLook), 0, Input.GetAxisRaw(profile.verticalLook)).normalized;
+			} else {
+				Vector3 mousePosition = Vector3.zero;;
+				Ray mouseRay = viewCamera.ScreenPointToRay(Input.mousePosition);
+				Debug.DrawRay(mouseRay.origin, mouseRay.direction * 100, Color.red);
+				RaycastHit hit;
 
-			if(Physics.Raycast(mouseRay, out hit, Mathf.Infinity)){
-				mousePosition = hit.point;
+				if(Physics.Raycast(mouseRay, out hit, Mathf.Infinity)){
+					mousePosition = hit.point;
+				}
+
+				input = mousePosition;
 			}
 
-			input = mousePosition;
-		}
-
-		input.y = 0;
-		
-		if(input != Vector3.zero) {
-			rotator.Rotate(input, profile.useMouse);
-		}
+			input.y = 0;
+			
+			if(input != Vector3.zero) {
+				rotator.Rotate(input, profile.useMouse);
+			}
+		}	
 	}
 
 	void ToggleFlashlight(){
-		if(Input.GetButtonDown(profile.toggleFlashlight)) {
+		if(flashlight && Input.GetButtonDown(profile.toggleFlashlight)) {
 			flashlight.ToggleLight();
 		}
 	}
 
 	void Shoot(){
-		if(Input.GetButtonDown(profile.shoot)){
-			inventory.Shoot();
+		if(inventory && Input.GetButtonDown(profile.shoot)){
+			inventory.weapon.Use();
 		}
 	}
 }

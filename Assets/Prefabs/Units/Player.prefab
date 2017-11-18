@@ -27,11 +27,11 @@ GameObject:
   - component: {fileID: 114637073676522876}
   - component: {fileID: 114831078319685612}
   - component: {fileID: 114702531885822026}
-  - component: {fileID: 114671442447314792}
   - component: {fileID: 114980812997881808}
   - component: {fileID: 137182472546216956}
   - component: {fileID: 95325063991461770}
   - component: {fileID: 114288429099762846}
+  - component: {fileID: 114757585300928890}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -403,7 +403,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52d847a86757a4f4dac25f67214b63d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  profile: {fileID: 11400000, guid: 1941630acf3d1ff47a033cff2622c917, type: 2}
+  profile: {fileID: 11400000, guid: 189c73fa9b403c145a47665c4a8785ae, type: 2}
 --- !u!114 &114637073676522876
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -425,23 +425,10 @@ MonoBehaviour:
     m_Bits: 256
   visibleTargets: []
   scanFrequency: 0.1
-  fovResolution: 10
-  edgeDetectionAccuracy: 5
+  fovResolution: 20
+  edgeDetectionAccuracy: 10
   edgeDistanceThreshold: 0.1
   viewMeshFilter: {fileID: 33452584773678486}
---- !u!114 &114671442447314792
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1146904742983320}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 211df0aa6b2f0204d9e7e748aeaf9c95, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  testBullet: {fileID: 1376910079835240, guid: 8fde21b6ee8473d4fa2db860fdd9e25e, type: 2}
-  bulletOrigin: {fileID: 4689965115357520}
 --- !u!114 &114702531885822026
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -484,6 +471,18 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &114757585300928890
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1146904742983320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 211df0aa6b2f0204d9e7e748aeaf9c95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weapon: {fileID: 0}
 --- !u!114 &114831078319685612
 MonoBehaviour:
   m_ObjectHideFlags: 1
