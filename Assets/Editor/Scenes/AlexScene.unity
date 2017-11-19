@@ -872,8 +872,10 @@ GameObject:
   - component: {fileID: 771920702}
   - component: {fileID: 771920701}
   - component: {fileID: 771920706}
+  - component: {fileID: 771920707}
+  - component: {fileID: 771920708}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: DestructableWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -904,8 +906,30 @@ MonoBehaviour:
   OnNoHealth:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 771920707}
+        m_MethodName: Instantiate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 771920706}
         m_MethodName: Destroy
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 771920708}
+        m_MethodName: AddForceAtLocation
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -977,8 +1001,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 771920700}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.9814744, y: 1.26, z: 13.84}
-  m_LocalScale: {x: 2.5066547, y: 2.7622313, z: 1}
+  m_LocalPosition: {x: 4, y: 1, z: 13}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 13
@@ -994,6 +1018,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2f251211f3c38840966708544cfaa7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &771920707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 771920700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2499824364cbedf4baeea029550acb28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  instantiatedObject: {fileID: 1304929698625288, guid: c8e8cfe0a18789c48887e7d458cab624,
+    type: 2}
+  position: {fileID: 771920705}
+  rotation: {fileID: 771920705}
+--- !u!114 &771920708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 771920700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5917fb7c7e9db1a43b0a3271c3406d71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  force: 5
+  location: {fileID: 0}
+  radius: 3
 --- !u!1001 &856512240
 Prefab:
   m_ObjectHideFlags: 0
@@ -1193,6 +1246,7 @@ GameObject:
   - component: {fileID: 1032502384}
   - component: {fileID: 1032502385}
   - component: {fileID: 1032502386}
+  - component: {fileID: 1032502387}
   m_Layer: 0
   m_Name: Weapon2
   m_TagString: Untagged
@@ -1239,6 +1293,17 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1032502382}
         m_MethodName: _DrawLine
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1032502387}
+        m_MethodName: AddForceAtLocation
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1580,6 +1645,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1032502387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1032502373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5917fb7c7e9db1a43b0a3271c3406d71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  force: 5
+  location: {fileID: 0}
+  radius: 2
 --- !u!4 &1109427417 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4379180111014244, guid: c539f8f3e7ab4244eadae16e437a533d,

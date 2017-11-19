@@ -15,4 +15,6 @@ public class InputProfile : ScriptableObject {
 
 	public string shoot;
 	public string toggleFlashlight;
+
+	public string interact;
 }

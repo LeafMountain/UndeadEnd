@@ -74,7 +74,9 @@ public class PlayerController : MonoBehaviour {
 
 	void Shoot(){
 		if(inventory && Input.GetButtonDown(profile.shoot)){
-			inventory.weapon.Use();
+			if(inventory.weapon){
+				inventory.weapon.Use();
+			}
 		}
 	}
 }
