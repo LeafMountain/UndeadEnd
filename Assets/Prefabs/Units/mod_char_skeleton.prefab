@@ -22,8 +22,9 @@ GameObject:
   - component: {fileID: 95186491597627804}
   - component: {fileID: 137291697786164688}
   - component: {fileID: 136743022681906516}
-  - component: {fileID: 114602319272018916}
   - component: {fileID: 114604050947979800}
+  - component: {fileID: 114714716960313760}
+  - component: {fileID: 114380870925233822}
   m_Layer: 8
   m_Name: mod_char_skeleton
   m_TagString: Untagged
@@ -119,7 +120,31 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 0
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114602319272018916
+--- !u!114 &114380870925233822
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1095638358044972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b20d613217f50fc41a2c6d0367e1a4d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animationFloats:
+  - {fileID: 11400000, guid: 00522fe56cadca447a336e398a828a76, type: 2}
+--- !u!114 &114604050947979800
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1095638358044972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2f251211f3c38840966708544cfaa7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114714716960313760
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -130,7 +155,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 460313828068c2b40838ca99788ef819, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 3
+  currentHealth: {fileID: 0}
+  maxHealth:
+    useConstant: 0
+    constantValue: 0
+    variable: {fileID: 11400000, guid: 07894f4c235248c488227085c6502763, type: 2}
+  resetOnPlay: 1
   OnDamaged:
     m_PersistentCalls:
       m_Calls: []
@@ -157,17 +187,6 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!114 &114604050947979800
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1095638358044972}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2f251211f3c38840966708544cfaa7c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!136 &136743022681906516
 CapsuleCollider:
   m_ObjectHideFlags: 1

@@ -254,7 +254,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 1109427417}
   cameraHeight: 15
-  cameraPitch: 70
+  cameraPitch: 89
   cameraYaw: 45
 --- !u!1001 &200508794
 Prefab:
@@ -731,6 +731,7 @@ GameObject:
   - component: {fileID: 660146052}
   - component: {fileID: 660146051}
   - component: {fileID: 660146050}
+  - component: {fileID: 660146054}
   m_Layer: 9
   m_Name: Ramp
   m_TagString: Untagged
@@ -804,6 +805,34 @@ Transform:
   m_Father: {fileID: 227567183}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -13.372001}
+--- !u!114 &660146054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 660146049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46d7364fdeb1e0f4aa8c099542f26641, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 13cc86facf77645408bad803746c08ff, type: 2}
+  onRaised:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 660146049}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!1001 &769451647
 Prefab:
   m_ObjectHideFlags: 0
@@ -879,7 +908,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 460313828068c2b40838ca99788ef819, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 5
+  currentHealth: {fileID: 0}
+  maxHealth:
+    useConstant: 1
+    constantValue: 3
+    variable: {fileID: 0}
+  resetOnPlay: 0
   OnDamaged:
     m_PersistentCalls:
       m_Calls: []
@@ -1859,6 +1893,11 @@ Prefab:
     - target: {fileID: 4379180111014244, guid: c539f8f3e7ab4244eadae16e437a533d, type: 2}
       propertyPath: m_RootOrder
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 114731297977544326, guid: c539f8f3e7ab4244eadae16e437a533d,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c539f8f3e7ab4244eadae16e437a533d, type: 2}

@@ -33,7 +33,6 @@ GameObject:
   - component: {fileID: 114288429099762846}
   - component: {fileID: 114757585300928890}
   - component: {fileID: 114523236466830716}
-  - component: {fileID: 114314056891573884}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -356,19 +355,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b20d613217f50fc41a2c6d0367e1a4d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114314056891573884
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1146904742983320}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d0dcd8887afb8449a22529804c7ead9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  types: {fileID: 0}
-  range: 0
 --- !u!114 &114523236466830716
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -455,12 +441,17 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1146904742983320}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 460313828068c2b40838ca99788ef819, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 3
+  currentHealth: {fileID: 11400000, guid: 2e8a6d881d8cec748adbcabac1a82aef, type: 2}
+  maxHealth:
+    useConstant: 0
+    constantValue: 0
+    variable: {fileID: 11400000, guid: eb4eccd78efc5374fa9e3c794129bcef, type: 2}
+  resetOnPlay: 1
   OnDamaged:
     m_PersistentCalls:
       m_Calls: []

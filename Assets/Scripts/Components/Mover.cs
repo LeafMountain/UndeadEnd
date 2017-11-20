@@ -43,15 +43,22 @@ public class Mover : MonoBehaviour {
 
 	public void Move(Vector3 input){
 		Vector3 moveDirection = Vector3.zero;
+		Transform cameraTransform = Camera.main.transform;
 
 		switch (moveRelativeTo) {
 			case(MoveDirection.World):
 				moveDirection = input;
 				break;
 			case(MoveDirection.Camera):
-				Vector3 cameraForward = new Vector3(Camera.main.transform.forward.x, 0, Camera.main.transform.forward.z).normalized;
-				Vector3 cameraRight = new Vector3(Camera.main.transform.right.x, 0, Camera.main.transform.right.z).normalized;
-				moveDirection = cameraForward * input.z + cameraRight * input.x;
+				Vector3 cameraForward = cameraTransform.forward;
+				cameraForward.y = 0;
+				Vector3 cameraRight = cameraTransform.right;
+				cameraRight.y = 0;
+				Vector3 cameraUp = Camera.main.transform.up;
+				cameraUp.y = 0;
+
+				moveDirection = (cameraForward + cameraUp) * input.z + cameraRight * input.x;
+				moveDirection.Normalize();
 				break;
 			case(MoveDirection.Self):
 				moveDirection = transform.forward * input.z + transform.right * input.x;
@@ -59,7 +66,7 @@ public class Mover : MonoBehaviour {
 			default:
 				break;
 		}
-		
+
 		controller.Move(moveDirection * normalSpeed);
 	}
 }
