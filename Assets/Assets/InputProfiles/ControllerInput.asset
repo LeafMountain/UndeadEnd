@@ -18,3 +18,4 @@ MonoBehaviour:
   verticalLook: LookVertical
   shoot: TriggerRight
   toggleFlashlight: BumperLeft
+  interact: Fire1

@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour {
 	Rotator rotator;
 	Camera viewCamera;
 	Flashlight flashlight;
-	Inventory inventory;
+	// Inventory inventory;
 
 	Vector3 lookDirection;
 
@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour {
 		rotator = GetComponent<Rotator>();
 		viewCamera = Camera.main;
 		flashlight = GetComponent<Flashlight>();
-		inventory = GetComponent<Inventory>();
+		// inventory = GetComponent<Inventory>();
 	}
 
 	void Update(){		
@@ -73,13 +73,13 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void Shoot(){
-		if(inventory && Input.GetButtonDown(profile.shoot)){
-			if(inventory.weapon){
-				TriggerInteract trigger = inventory.weapon.GetComponent<TriggerInteract>();
-				if(trigger){
-					trigger.Interact();
-				}
-			}
-		}
+		// if(inventory && Input.GetButtonDown(profile.shoot)){
+		// 	if(inventory.weapon){
+		// 		TriggerInteract trigger = inventory.weapon.GetComponent<TriggerInteract>();
+		// 		if(trigger){
+		// 			trigger.Interact();
+		// 		}
+		// 	}
+		// }
 	}
 }
