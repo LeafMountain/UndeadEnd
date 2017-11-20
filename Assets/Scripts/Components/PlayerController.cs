@@ -75,7 +75,10 @@ public class PlayerController : MonoBehaviour {
 	void Shoot(){
 		if(inventory && Input.GetButtonDown(profile.shoot)){
 			if(inventory.weapon){
-				inventory.weapon.Use();
+				TriggerInteract trigger = inventory.weapon.GetComponent<TriggerInteract>();
+				if(trigger){
+					trigger.Interact();
+				}
 			}
 		}
 	}

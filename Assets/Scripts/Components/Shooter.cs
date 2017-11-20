@@ -9,7 +9,7 @@ public class Shooter : MonoBehaviour {
 	public float range = 1;
 
 	public UnityEvent OnShoot;
-	public UnityTriggerEvent OnHitTarget;
+	public UnityTriggerOverlapEvent OnHitTarget;
 	public UnityPositionEvent onHitPosition;
 
 	void Start(){

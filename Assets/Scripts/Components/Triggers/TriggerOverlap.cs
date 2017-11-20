@@ -4,10 +4,10 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [RequireComponent(typeof(Collider))]
-public class Trigger : MonoBehaviour {
+public class TriggerOverlap : MonoBehaviour {
 
-	public UnityTriggerEvent OnTriggerEntered;
-	public UnityTriggerEvent OnTriggerExited;
+	public UnityTriggerOverlapEvent OnTriggerEntered;
+	public UnityTriggerOverlapEvent OnTriggerExited;
 	
 	void OnTriggerEnter(Collider col){
 		OnTriggerEntered.Invoke(col);
@@ -20,4 +20,4 @@ public class Trigger : MonoBehaviour {
 }
 
 [System.Serializable]
-public class UnityTriggerEvent : UnityEvent<Collider> { }
+public class UnityTriggerOverlapEvent : UnityEvent<Collider> { }

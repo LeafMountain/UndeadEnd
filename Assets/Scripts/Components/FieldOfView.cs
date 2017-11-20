@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class FieldOfView : MonoBehaviour {
 
+	public Transform origin;
+
 	[Range(0, 30)]
 	public float radius = 10;
 	[Range(0, 360)]
@@ -26,6 +28,10 @@ public class FieldOfView : MonoBehaviour {
 	Mesh viewMesh;
 
 	void Start(){
+		if(!origin){
+			origin = transform;
+		}
+		
 		viewMesh = new Mesh();
 		viewMesh.name = "View mesh";
 		viewMeshFilter.sharedMesh = viewMesh;
@@ -46,17 +52,17 @@ public class FieldOfView : MonoBehaviour {
 
 	void FindVisibleTargets(){
 		visibleTargets.Clear();
-		Collider[] targetsInViewRadius = Physics.OverlapSphere(transform.position, radius, targetMask);
+		Collider[] targetsInViewRadius = Physics.OverlapSphere(origin.position, radius, targetMask);
 
 		for (int i = 0; i < targetsInViewRadius.Length; i++)
 		{
 			Transform target = targetsInViewRadius [i].transform;
-			Vector3 dirToTarget = (target.position - transform.position).normalized;
+			Vector3 dirToTarget = (target.position - origin.position).normalized;
 
 			if(Vector3.Angle(transform.forward, dirToTarget) < viewAngle / 2){
-				float dstToTarget = Vector3.Distance(transform.position, target.position);
+				float dstToTarget = Vector3.Distance(origin.position, target.position);
 
-				if(!Physics.Raycast(transform.position, dirToTarget, dstToTarget, obstacleMask)){
+				if(!Physics.Raycast(origin.position, dirToTarget, dstToTarget, obstacleMask)){
 					visibleTargets.Add(target);
 				}
 			}
@@ -110,18 +116,18 @@ public class FieldOfView : MonoBehaviour {
 		viewMesh.triangles = triangles;
 		viewMesh.RecalculateNormals();
 
-		viewPoints.ForEach(point => Debug.DrawLine(transform.position, point, Color.red));
+		viewPoints.ForEach(point => Debug.DrawLine(origin.position, point, Color.red));
 	}
 
 	ViewCastInfo ViewCast(float globalAngle){
 		Vector3 dir = DirFromAngle(globalAngle, true);
 		RaycastHit hit;
 
-		if(Physics.Raycast(transform.position, dir, out hit, radius, obstacleMask)){
+		if(Physics.Raycast(origin.position, dir, out hit, radius, obstacleMask)){
 			return new ViewCastInfo(true, hit.point, hit.distance, globalAngle);
 		}
 
-		return new ViewCastInfo(false, transform.position + dir * radius, radius, globalAngle);
+		return new ViewCastInfo(false, origin.position + dir * radius, radius, globalAngle);
 	}
 
 	public Vector3 DirFromAngle(float angleInDegrees, bool angleIsGlobal) {

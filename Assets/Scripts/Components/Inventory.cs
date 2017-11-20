@@ -5,25 +5,26 @@ using UnityEngine;
 public class Inventory : MonoBehaviour {
 
 	public Transform weaponSlot;
-	public Useable weapon;
+	public Storeable weapon;
 
 	public void AddItem(Collectable collectable){
-		Useable useable = collectable.GetComponent<Useable>();
-		if(useable){
-			AddWeapon(useable);
+		Storeable storeable = collectable.GetComponent<Storeable>();
+		
+		if(storeable){
+			AddWeapon(storeable);
 		}
 	}
 
-	public void AddWeapon(Useable useable){
+	public void AddWeapon(Storeable storeable){
 		if(weapon){
 			RemoveWeapon();
 		}
 
-		weapon = useable;
+		weapon = storeable;
 
-		useable.transform.position = Vector3.zero;
-		useable.transform.rotation = Quaternion.identity;
-		useable.transform.SetParent(weaponSlot, false);
+		storeable.transform.position = Vector3.zero;
+		storeable.transform.rotation = Quaternion.identity;
+		storeable.transform.SetParent(weaponSlot, false);
 	}
 
 	public void RemoveWeapon(){
