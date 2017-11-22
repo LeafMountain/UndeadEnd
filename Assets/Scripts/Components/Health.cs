@@ -4,36 +4,35 @@ using UnityEngine.Events;
 
 public class Health : MonoBehaviour {
 
-    public int maxHealth = 3;
-    int currentHealth;
+    public FloatVariable currentHealth;
+    public FloatReference maxHealth;
+    public bool resetOnPlay = true;
 
     public UnityEvent OnDamaged;
     public UnityEvent OnHealed;
     public UnityEvent OnNoHealth;
 
     void Start(){
-        currentHealth = maxHealth;
+        if(!currentHealth){
+            currentHealth = new FloatVariable();
+            currentHealth.name = gameObject.name + " HP";
+        }
+        currentHealth.SetValue(maxHealth.Value);
     }
 
-    public void Damage(int amount) {
-        if(amount < 0){
-            Debug.LogError("Cant damage negative damage");
-            return;
+    public void ModifyHealth(float amount) {
+
+        currentHealth.ApplyChange(amount);
+
+        if(amount > 0){
+                OnHealed.Invoke();
+        } else{
+            OnDamaged.Invoke();
         }
 
-        currentHealth -= amount;
-
-        OnDamaged.Invoke();
-
-        if (currentHealth <= 0){
-            currentHealth = 0;
+        if (currentHealth.Value <= 0){
+            currentHealth.SetValue(0);
             OnNoHealth.Invoke();
         }
-    }
-
-    public void Heal(int amount){
-        currentHealth += amount;
-
-        OnHealed.Invoke();
     }
 }

@@ -7,12 +7,12 @@ public class Respawnable : MonoBehaviour {
 	public Vector3 spawnPoint;
 
 	void Start(){
-		spawnPoint = transform.position;
+		if(spawnPoint == Vector3.zero){
+			spawnPoint = transform.position;
+		}
 	}
 
 	public void Respawn(){
-		Health health = GetComponent<Health>();
-		health.Heal(health.maxHealth);
 		transform.position = spawnPoint;
 	}
 
