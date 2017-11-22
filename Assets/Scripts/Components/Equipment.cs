@@ -5,20 +5,17 @@ using UnityEngine;
 public class Equipment : MonoBehaviour {
 
 	public Inventory inventory;
-	public Storeable currentlyEquipped;
-
-	public Transform equipSlot1;
-	public Transform equipSlot2;
+	public GameObject currentlyEquipped;
 
 	int currentIndex = 0;
 
-	public void AddItem(Collectable collectable){
-		Storeable storeable = collectable.GetComponent<Storeable>();
+	public void AddItem(GameObject go){
+		Storeable storeable = go.GetComponent<Storeable>();
 		if(storeable){
 			AddItem(storeable);
 
 			if(!currentlyEquipped){
-				Equip(storeable, equipSlot1);
+				currentlyEquipped = go;
 			}
 		}
 	}
@@ -36,20 +33,13 @@ public class Equipment : MonoBehaviour {
 		return inventory.items[currentIndex % inventory.size];
 	}
 
-	public void Equip(Storeable storeable, Transform equipTransform){
-		if(equipSlot1){
-			
-		} else{
-			currentlyEquipped = storeable;
+	public void InteractWithCurrentlyEquipment(){
+		if(currentlyEquipped){
+			TriggerInteract trigger = currentlyEquipped.GetComponent<TriggerInteract>();
 
+			if(trigger){
+				trigger.Interact();
+			}
 		}
-
-		storeable.transform.position = Vector3.zero;
-		storeable.transform.rotation = Quaternion.identity;
-		storeable.transform.SetParent(currentlyEquipped.transform);
-	}
-
-	public void UnEquip(){
-
 	}
 }

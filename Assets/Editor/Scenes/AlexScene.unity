@@ -1864,6 +1864,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114628328527363728, guid: c539f8f3e7ab4244eadae16e437a533d,
+        type: 2}
+      propertyPath: fireButton.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4379180111014244, guid: c539f8f3e7ab4244eadae16e437a533d, type: 2}
       propertyPath: m_LocalPosition.x
       value: 4
@@ -1896,10 +1901,25 @@ Prefab:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
-    - target: {fileID: 114637073676522876, guid: c539f8f3e7ab4244eadae16e437a533d,
+    - target: {fileID: 114628328527363728, guid: c539f8f3e7ab4244eadae16e437a533d,
         type: 2}
-      propertyPath: radius
-      value: 15
+      propertyPath: fireButton.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114628328527363728, guid: c539f8f3e7ab4244eadae16e437a533d,
+        type: 2}
+      propertyPath: fireButton.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114628328527363728, guid: c539f8f3e7ab4244eadae16e437a533d,
+        type: 2}
+      propertyPath: fireButton.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114628328527363728, guid: c539f8f3e7ab4244eadae16e437a533d,
+        type: 2}
+      propertyPath: fireButton.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: InteractWithCurrentlyEquipment
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c539f8f3e7ab4244eadae16e437a533d, type: 2}

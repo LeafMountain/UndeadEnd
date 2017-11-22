@@ -33,6 +33,7 @@ GameObject:
   - component: {fileID: 114288429099762846}
   - component: {fileID: 114523236466830716}
   - component: {fileID: 114305906807974926}
+  - component: {fileID: 114216697564673284}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -344,6 +345,19 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &114216697564673284
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1146904742983320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f861d2a9763c1ed4a817a2953e3269e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventory: {fileID: 11400000, guid: 8725d24dc73daff43945396ddc132720, type: 2}
+  currentlyEquipped: {fileID: 0}
 --- !u!114 &114288429099762846
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -394,6 +408,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 114216697564673284}
+        m_MethodName: AddItem
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityGameObjectEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
 --- !u!114 &114628328527363728
@@ -407,7 +432,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52d847a86757a4f4dac25f67214b63d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  profile: {fileID: 11400000, guid: 189c73fa9b403c145a47665c4a8785ae, type: 2}
+  profile: {fileID: 11400000, guid: 1941630acf3d1ff47a033cff2622c917, type: 2}
+  interactButton:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  fireButton:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114216697564673284}
+        m_MethodName: InteractWithCurrentlyEquipment
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &114637073676522876
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -420,7 +466,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   origin: {fileID: 0}
-  radius: 25
+  radius: 15
   viewAngle: 360
   obstacleMask:
     serializedVersion: 2
