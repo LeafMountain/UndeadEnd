@@ -18,10 +18,10 @@ public class Flashlight : MonoBehaviour {
 
 	void Update () {
 		if(fov){
-			if(light.range != fov.radius){
+			if(useViewRadius && light.range != fov.radius){
 				light.range = fov.radius;
 			}
-			if(light.spotAngle != fov.viewAngle){
+			if(useViewAngle && light.spotAngle != fov.viewAngle){
 				light.spotAngle = fov.viewAngle;
 			}
 		}

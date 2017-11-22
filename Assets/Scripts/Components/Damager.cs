@@ -10,7 +10,7 @@ public class Damager : MonoBehaviour {
     public void Damage (Collider col)
     {
         if(col.GetComponent<Health>()){
-            col.GetComponent<Health>().Damage(damage);
+            col.GetComponent<Health>().ModifyHealth(damage);
         }
     }
 }
