@@ -27,13 +27,15 @@ GameObject:
   - component: {fileID: 114628328527363728}
   - component: {fileID: 114637073676522876}
   - component: {fileID: 114831078319685612}
-  - component: {fileID: 114702531885822026}
   - component: {fileID: 114980812997881808}
   - component: {fileID: 95325063991461770}
   - component: {fileID: 114288429099762846}
   - component: {fileID: 114523236466830716}
   - component: {fileID: 114305906807974926}
   - component: {fileID: 114216697564673284}
+  - component: {fileID: 114186881141355006}
+  - component: {fileID: 114730629673880426}
+  - component: {fileID: 114180526875981484}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -345,6 +347,51 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &114180526875981484
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1146904742983320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9283586832fee3943a524e17a79bbc68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  exclusiveTo: []
+  OnTriggerEntered:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114730629673880426}
+        m_MethodName: CheckTags
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityGameObjectEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  OnTriggerExited:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityGameObjectEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+--- !u!114 &114186881141355006
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1146904742983320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06e654c9b37c76b4687ce6aa64af37d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  message: Collectable found
 --- !u!114 &114216697564673284
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -432,7 +479,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52d847a86757a4f4dac25f67214b63d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  profile: {fileID: 11400000, guid: 1941630acf3d1ff47a033cff2622c917, type: 2}
+  profile: {fileID: 11400000, guid: 189c73fa9b403c145a47665c4a8785ae, type: 2}
   interactButton:
     m_PersistentCalls:
       m_Calls: []
@@ -454,6 +501,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  lookRotation: 0
 --- !u!114 &114637073676522876
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -480,7 +528,7 @@ MonoBehaviour:
   edgeDetectionAccuracy: 5
   edgeDistanceThreshold: 1
   viewMeshFilter: {fileID: 33452584773678486}
---- !u!114 &114702531885822026
+--- !u!114 &114730629673880426
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -488,13 +536,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 1146904742983320}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f17a40ed6bbc4244b838f72167873709, type: 3}
+  m_Script: {fileID: 11500000, guid: 74adf6a3ec0a68d46be55eb473f8e5ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  useViewAngle: 0
-  useViewRadius: 0
-  light: {fileID: 0}
-  lightToggle: 1
+  checks:
+  - tag: {fileID: 11400000, guid: 1a23105468e76424fb0d0bb206899928, type: 2}
+    foundAcceptedTag:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 114186881141355006}
+          m_MethodName: PrintMessage
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityGameObjectEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
 --- !u!114 &114731297977544326
 MonoBehaviour:
   m_ObjectHideFlags: 1
