@@ -31,8 +31,8 @@ GameObject:
   - component: {fileID: 114980812997881808}
   - component: {fileID: 95325063991461770}
   - component: {fileID: 114288429099762846}
-  - component: {fileID: 114757585300928890}
   - component: {fileID: 114523236466830716}
+  - component: {fileID: 114305906807974926}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -110,13 +110,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1466166619700704}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0.16250725, y: -0, z: -0, w: 0.98670745}
+  m_LocalPosition: {x: 0, y: 1.03, z: 0.32}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4379180111014244}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 18.705002, y: 0, z: 0}
 --- !u!4 &4379180111014244
 Transform:
   m_ObjectHideFlags: 1
@@ -318,7 +318,7 @@ Light:
   serializedVersion: 8
   m_Type: 0
   m_Color: {r: 1, g: 0.93975663, b: 0.60294116, a: 1}
-  m_Intensity: 3
+  m_Intensity: 1
   m_Range: 7.46
   m_SpotAngle: 73.73092
   m_CookieSize: 10
@@ -355,6 +355,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b20d613217f50fc41a2c6d0367e1a4d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animationFloats: []
+--- !u!114 &114305906807974926
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1146904742983320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 959e47ee829512c4cb82e27e482be322, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parent: {fileID: 4839284431282460}
+  resetTransform: 1
 --- !u!114 &114523236466830716
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -369,8 +383,8 @@ MonoBehaviour:
   OnCollected:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114757585300928890}
-        m_MethodName: AddItem
+      - m_Target: {fileID: 114305906807974926}
+        m_MethodName: SetParent
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -380,7 +394,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: UnityCollectableEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+    m_TypeName: UnityGameObjectEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
 --- !u!114 &114628328527363728
 MonoBehaviour:
@@ -406,7 +420,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   origin: {fileID: 0}
-  radius: 20
+  radius: 25
   viewAngle: 360
   obstacleMask:
     serializedVersion: 2
@@ -416,9 +430,9 @@ MonoBehaviour:
     m_Bits: 256
   visibleTargets: []
   scanFrequency: 0.1
-  fovResolution: 50
-  edgeDetectionAccuracy: 10
-  edgeDistanceThreshold: 0.1
+  fovResolution: 20
+  edgeDetectionAccuracy: 5
+  edgeDistanceThreshold: 1
   viewMeshFilter: {fileID: 33452584773678486}
 --- !u!114 &114702531885822026
 MonoBehaviour:
@@ -432,8 +446,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   useViewAngle: 0
-  useViewRadius: 1
-  light: {fileID: 108184998775481396}
+  useViewRadius: 0
+  light: {fileID: 0}
   lightToggle: 1
 --- !u!114 &114731297977544326
 MonoBehaviour:
@@ -441,7 +455,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1146904742983320}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 460313828068c2b40838ca99788ef819, type: 3}
   m_Name: 
@@ -467,19 +481,6 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!114 &114757585300928890
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1146904742983320}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 211df0aa6b2f0204d9e7e748aeaf9c95, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weaponSlot: {fileID: 4839284431282460}
-  weapon: {fileID: 0}
 --- !u!114 &114831078319685612
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -503,7 +504,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveRelativeTo: 1
-  normalSpeed: 0.07
+  normalSpeed: 0.1
   currentSpeedPercentage: 0
 --- !u!114 &114980812997881808
 MonoBehaviour:
@@ -518,7 +519,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   yOffset: 0.1
   distanceToGround: 0.5
-  gravity: -30
+  gravity: -12
 --- !u!143 &143223570802644664
 CharacterController:
   m_ObjectHideFlags: 1

@@ -5,11 +5,11 @@ using UnityEngine;
 [CreateAssetMenu]
 public class Inventory : ScriptableObject {
 
-	public FloatReference inventorySize;
+	public int size;
 	public List<Storeable> items = new List<Storeable>();
 
 	public bool AddItem(Storeable storeable){
-		if(items.Count < inventorySize.Value && !items.Contains(storeable)){
+		if(items.Count < size && !items.Contains(storeable)){
 			items.Add(storeable);
 			return true;
 		}

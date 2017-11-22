@@ -7,9 +7,9 @@ public class TopDownCamera : MonoBehaviour
     [Range(2, 50)]
     public float cameraHeight = 15;
     [Range(0, 90)]
-    public float cameraPitch = 70;
+    public float cameraPitch = 80;
     [Range(0, 360)]
-    public float cameraYaw = 0;
+    public float cameraYaw = 45;
 
     void LateUpdate(){
         transform.eulerAngles = new Vector3(cameraPitch, cameraYaw, 0);

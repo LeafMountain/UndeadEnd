@@ -6,17 +6,16 @@ public class Collectable : MonoBehaviour {
     public UnityEvent onCollected;
     public UnityEvent onDropped;
 
-    public void OnCollected(Collider col){
-        Collector collector = col.GetComponent<Collector>();
+    public void Collect(GameObject go){
+        Collector collector = go.GetComponent<Collector>();
 
         if(collector){
-            collector.Collect(this);
+            collector.Collect(gameObject);
             onCollected.Invoke();
         }
     }
 
     public void Drop(){
-        transform.SetParent(null);
         onDropped.Invoke();
     }
 }

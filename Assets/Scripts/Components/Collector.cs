@@ -5,12 +5,9 @@ using UnityEngine.Events;
 
 public class Collector : MonoBehaviour {
 
-	public UnityCollectableEvent OnCollected;
+	public UnityGameObjectEvent OnCollected;
 
-	public void Collect(Collectable collectable){
+	public void Collect(GameObject collectable){
 		OnCollected.Invoke(collectable);
 	}
 }
-
-[System.Serializable]
-public class UnityCollectableEvent : UnityEvent<Collectable> {}

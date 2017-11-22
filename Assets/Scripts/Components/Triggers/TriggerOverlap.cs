@@ -6,18 +6,38 @@ using UnityEngine.Events;
 [RequireComponent(typeof(Collider))]
 public class TriggerOverlap : MonoBehaviour {
 
-	public UnityTriggerOverlapEvent OnTriggerEntered;
-	public UnityTriggerOverlapEvent OnTriggerExited;
+	public Collider[] exclusiveTo;
+
+	public UnityGameObjectEvent OnTriggerEntered;
+	public UnityGameObjectEvent OnTriggerExited;
 	
 	void OnTriggerEnter(Collider col){
-		OnTriggerEntered.Invoke(col);
+		GameObject go = col.gameObject;
+
+		if(exclusiveTo != null && exclusiveTo.Length > 0){
+			for (int i = 0; i < exclusiveTo.Length; i++){
+				if(exclusiveTo[i] == col){
+					OnTriggerEntered.Invoke(go);
+				}
+			}
+		} else {
+			OnTriggerEntered.Invoke(go);
+		}
 	}
 
 	void OnTriggerExit(Collider col){
-		OnTriggerExited.Invoke(col);
+		GameObject go = col.gameObject;
+		
+		if(exclusiveTo != null){
+			for (int i = 0; i < exclusiveTo.Length; i++){
+				if(exclusiveTo[i] == col){
+					OnTriggerExited.Invoke(go);
+				}
+			}
+
+		} else {
+			OnTriggerExited.Invoke(go);
+		}
 	}
 
 }
-
-[System.Serializable]
-public class UnityTriggerOverlapEvent : UnityEvent<Collider> { }

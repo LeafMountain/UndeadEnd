@@ -131,8 +131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b20d613217f50fc41a2c6d0367e1a4d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationFloats:
-  - {fileID: 11400000, guid: 00522fe56cadca447a336e398a828a76, type: 2}
+  animationFloats: []
 --- !u!114 &114604050947979800
 MonoBehaviour:
   m_ObjectHideFlags: 1
