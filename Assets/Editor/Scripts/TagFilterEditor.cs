@@ -13,11 +13,13 @@ public class TagFilterEditor : Editor {
 	private void OnEnable() {
         listOfTagChecks = new ReorderableList(serializedObject, serializedObject.FindProperty("checks"), true, true, true, true);
 
-		listOfTagChecks.elementHeight = 110;
+		// listOfTagChecks.elementHeight = 110;
 
-        listOfTagChecks.drawElementCallback = (Rect rect, int index, bool isActive, bool isFocused) => {
+        listOfTagChecks.drawElementCallback = (Rect rect, int index, bool isActive, bool isFocused) => {            
             SerializedProperty element = listOfTagChecks.serializedProperty.GetArrayElementAtIndex(index);
             rect.y += 2;
+
+		    listOfTagChecks.elementHeight = 110;            
 
             EditorGUI.PropertyField(new Rect(rect.x, rect.y, rect.width, EditorGUIUtility.singleLineHeight), element.FindPropertyRelative("tag"), GUIContent.none);
             EditorGUI.PropertyField(new Rect(rect.x, rect.y + EditorGUIUtility.singleLineHeight + 2, rect.width, 100), element.FindPropertyRelative("acceptedTagFound"), GUIContent.none);

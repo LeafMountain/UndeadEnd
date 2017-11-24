@@ -1,11 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Equipment : MonoBehaviour {
 
 	public Inventory inventory;
 	public GameObject currentlyEquipped;
+
+	public UnityGameObjectEvent addedItem;
 
 	int currentIndex = 0;
 
@@ -22,6 +25,7 @@ public class Equipment : MonoBehaviour {
 
 	public void AddItem(Storeable storeable){
 		inventory.AddItem(storeable);
+		addedItem.Invoke(storeable.gameObject);
 	}
 
 	public void RemoveItem(Storeable storeable){

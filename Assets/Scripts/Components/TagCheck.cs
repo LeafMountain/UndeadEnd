@@ -10,6 +10,12 @@ public class TagCheck {
 
 	public UnityGameObjectEvent acceptedTagFound;
 
+	public int arraySize {
+		get{
+			return acceptedTagFound.GetPersistentEventCount();
+		}
+	}
+
 	public void CheckTags(Taggable taggable){
 		if(taggable.Contains(tag)){
 			acceptedTagFound.Invoke(taggable.gameObject);

@@ -31,11 +31,8 @@ GameObject:
   - component: {fileID: 95325063991461770}
   - component: {fileID: 114288429099762846}
   - component: {fileID: 114523236466830716}
-  - component: {fileID: 114305906807974926}
-  - component: {fileID: 114216697564673284}
-  - component: {fileID: 114186881141355006}
-  - component: {fileID: 114730629673880426}
   - component: {fileID: 114180526875981484}
+  - component: {fileID: 114730629673880426}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -68,6 +65,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4839284431282460}
+  - component: {fileID: 114862155579276466}
+  - component: {fileID: 114364250239904844}
   m_Layer: 0
   m_Name: Weapon Slot
   m_TagString: Untagged
@@ -380,31 +379,6 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityGameObjectEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
---- !u!114 &114186881141355006
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1146904742983320}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 06e654c9b37c76b4687ce6aa64af37d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  message: Collectable found
---- !u!114 &114216697564673284
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1146904742983320}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f861d2a9763c1ed4a817a2953e3269e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inventory: {fileID: 11400000, guid: 8725d24dc73daff43945396ddc132720, type: 2}
-  currentlyEquipped: {fileID: 0}
 --- !u!114 &114288429099762846
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -417,19 +391,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animationFloats: []
---- !u!114 &114305906807974926
+--- !u!114 &114364250239904844
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1146904742983320}
+  m_GameObject: {fileID: 1242248755059020}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 959e47ee829512c4cb82e27e482be322, type: 3}
+  m_Script: {fileID: 11500000, guid: f861d2a9763c1ed4a817a2953e3269e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parent: {fileID: 4839284431282460}
-  resetTransform: 1
+  inventory: {fileID: 11400000, guid: 8725d24dc73daff43945396ddc132720, type: 2}
+  currentlyEquipped: {fileID: 0}
 --- !u!114 &114523236466830716
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -444,7 +418,7 @@ MonoBehaviour:
   OnCollected:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114305906807974926}
+      - m_Target: {fileID: 0}
         m_MethodName: SetParent
         m_Mode: 0
         m_Arguments:
@@ -455,7 +429,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 114216697564673284}
+      - m_Target: {fileID: 0}
         m_MethodName: AddItem
         m_Mode: 0
         m_Arguments:
@@ -488,7 +462,7 @@ MonoBehaviour:
   fireButton:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114216697564673284}
+      - m_Target: {fileID: 0}
         m_MethodName: InteractWithCurrentlyEquipment
         m_Mode: 1
         m_Arguments:
@@ -541,12 +515,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   checks:
   - tag: {fileID: 11400000, guid: 1a23105468e76424fb0d0bb206899928, type: 2}
-    foundAcceptedTag:
+    acceptedTagFound:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityGameObjectEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+  - tag: {fileID: 11400000, guid: 63cbcc8078acc6347b0d4db03cdd0fad, type: 2}
+    acceptedTagFound:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 114186881141355006}
-          m_MethodName: PrintMessage
-          m_Mode: 1
+        - m_Target: {fileID: 114364250239904844}
+          m_MethodName: AddItem
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 114862155579276466}
+          m_MethodName: SetParent
+          m_Mode: 0
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -600,6 +591,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 614bdbdbedfb02d49ad4ea2759358210, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114862155579276466
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1242248755059020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 959e47ee829512c4cb82e27e482be322, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parent: {fileID: 4839284431282460}
+  resetTransform: 1
 --- !u!114 &114942306189593744
 MonoBehaviour:
   m_ObjectHideFlags: 1

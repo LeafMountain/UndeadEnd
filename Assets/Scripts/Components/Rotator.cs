@@ -30,7 +30,6 @@ public class Rotator : MonoBehaviour {
 
 		lookDirection.y = transform.position.y;
 
-		Debug.Log(lookDirection);
 		transform.LookAt(lookDirection);
 	}
 

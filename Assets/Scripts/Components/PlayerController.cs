@@ -76,7 +76,7 @@ public class PlayerController : MonoBehaviour {
 			input.y = 0;
 			
 			if(input != Vector3.zero) {
-				// rotator.Rotate(input, profile.useMouse);
+				rotator.Rotate(input, profile.useMouse);
 			}
 			rotator.Rotate(lookAngle);
 			
