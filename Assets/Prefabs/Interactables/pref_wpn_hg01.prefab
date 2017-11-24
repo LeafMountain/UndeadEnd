@@ -47,7 +47,7 @@ GameObject:
   - component: {fileID: 114412284300405346}
   - component: {fileID: 114953509050900698}
   m_Layer: 0
-  m_Name: Pistol
+  m_Name: pref_wpn_hg01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
