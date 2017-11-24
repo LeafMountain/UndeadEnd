@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine.Events;
 
-public class Collectable : MonoBehaviour {
+public class Collectible : MonoBehaviour {
     public UnityEvent onCollected;
     public UnityEvent onDropped;
 
