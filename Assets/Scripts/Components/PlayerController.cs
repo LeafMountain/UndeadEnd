@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(Mover), typeof(Rotator))]
 public class PlayerController : MonoBehaviour {
@@ -8,11 +9,13 @@ public class PlayerController : MonoBehaviour {
 	[SerializeField]
 	InputProfile profile;
 
+	public UnityEvent interactButton;
+	public UnityEvent fireButton;
+
 	Mover mover;
 	Rotator rotator;
 	Camera viewCamera;
 	Flashlight flashlight;
-	// Inventory inventory;
 
 	Vector3 lookDirection;
 
@@ -21,30 +24,42 @@ public class PlayerController : MonoBehaviour {
 		rotator = GetComponent<Rotator>();
 		viewCamera = Camera.main;
 		flashlight = GetComponent<Flashlight>();
-		// inventory = GetComponent<Inventory>();
 	}
 
 	void Update(){		
 		Move();
 		Look();
 		ToggleFlashlight();
-		Shoot();
+		// Shoot();
+
+		if(Input.GetButtonDown(profile.shoot)){
+			fireButton.Invoke();
+		}
+
+		if(Input.GetButtonDown(profile.interact)){
+			interactButton.Invoke();
+		}
 	}
 
 	void Move(){
 		if(mover){
 			Vector3 input = new Vector3(Input.GetAxisRaw(profile.horizontalMove),0, Input.GetAxisRaw(profile.verticalMove)).normalized;
-			
 			mover.Move(input);
 		}
 	}
 
+	public float lookRotation;
+
 	void Look(){
 		if(rotator){
-		Vector3 input = Vector3.zero;
+			Vector3 input = Vector3.zero;
+			float lookAngle = 0;
 
 			if(!profile.useMouse) {
-				input += new Vector3(Input.GetAxisRaw(profile.horizontalLook), 0, Input.GetAxisRaw(profile.verticalLook)).normalized;
+				Vector3 stickInput = new Vector3(Input.GetAxisRaw(profile.horizontalLook), 0, Input.GetAxisRaw(profile.verticalLook)).normalized;
+				// lookAngle = Vector3.Angle(Vector3.zero, stickInput);
+				Quaternion test = Quaternion.LookRotation(stickInput, Vector3.up);
+				lookAngle = test.eulerAngles.y;
 			} else {
 				Vector3 mousePosition = Vector3.zero;;
 				Ray mouseRay = viewCamera.ScreenPointToRay(Input.mousePosition);
@@ -63,6 +78,8 @@ public class PlayerController : MonoBehaviour {
 			if(input != Vector3.zero) {
 				rotator.Rotate(input, profile.useMouse);
 			}
+			rotator.Rotate(lookAngle);
+			
 		}	
 	}
 
@@ -70,16 +87,5 @@ public class PlayerController : MonoBehaviour {
 		if(flashlight && Input.GetButtonDown(profile.toggleFlashlight)) {
 			flashlight.ToggleLight();
 		}
-	}
-
-	void Shoot(){
-		// if(inventory && Input.GetButtonDown(profile.shoot)){
-		// 	if(inventory.weapon){
-		// 		TriggerInteract trigger = inventory.weapon.GetComponent<TriggerInteract>();
-		// 		if(trigger){
-		// 			trigger.Interact();
-		// 		}
-		// 	}
-		// }
 	}
 }
