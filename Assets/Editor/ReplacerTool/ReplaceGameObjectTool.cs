@@ -6,6 +6,7 @@ using UnityEditor;
 public class ReplaceGameObjectTool : EditorWindow {
 
 	GameObject replacer;
+	bool useSelectionScale;
 
 	[MenuItem("Window/Replace")]
 	public static void ShowWindow(){
@@ -14,31 +15,52 @@ public class ReplaceGameObjectTool : EditorWindow {
 
 	void OnGUI(){
 		GUILayout.Label("Game Object to replace selection", EditorStyles.boldLabel);
+		GUILayout.Toggle(useSelectionScale, "Use Selections Scale");
 
 		replacer = (GameObject)EditorGUILayout.ObjectField(replacer, typeof(GameObject));
 
 		if(GUILayout.Button("Replace Selected Game Objects")){
 
+			GameObject[] objects = Selection.gameObjects;
+
+			// Undo.RecordObjects(objects, "Undo Mass Replacement");
+
+			List<GameObject> newGOs = new List<GameObject>();
+
 			if(replacer){
-				foreach(GameObject go in Selection.gameObjects){
+				foreach(GameObject go in objects){
 					Vector3 pos = go.transform.position;
 					Quaternion rot = go.transform.rotation;
-					// Vector3 scale = go.transform.localScale;
+					Vector3 scale = go.transform.localScale;
 					Transform parent = go.transform.parent;
 					string name = go.name;
 
-					DestroyImmediate(go);
+					Undo.DestroyObjectImmediate(go);
 
 					// GameObject newGo = Instantiate(replacer, pos, rot, parent);
 					GameObject prefab = PrefabUtility.InstantiatePrefab(replacer) as GameObject;
 					prefab.transform.position = pos;
 					prefab.transform.rotation = rot;
+
+					if(useSelectionScale){
+						prefab.transform.localScale = scale;
+					}
+
 					prefab.transform.parent = parent;
 					prefab.name = name;
+
+					newGOs.Add(prefab);
 					
 					// newGo.transform.localScale = scale;
 					UnityEditor.SceneManagement.EditorSceneManager.MarkAllScenesDirty();
+
+					
 				}
+
+				for (int i = 0; i < newGOs.Count; i++){
+					Undo.RegisterCreatedObjectUndo(newGOs[i], "Undo created GameObject");
+				}
+
 			} else {
 				Debug.Log("No item to replace with");
 			}
