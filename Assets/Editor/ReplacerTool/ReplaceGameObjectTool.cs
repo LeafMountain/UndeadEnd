@@ -37,10 +37,20 @@ public class ReplaceGameObjectTool : EditorWindow {
 					prefab.name = name;
 					
 					// newGo.transform.localScale = scale;
+					UnityEditor.SceneManagement.EditorSceneManager.MarkAllScenesDirty();
 				}
 			} else {
 				Debug.Log("No item to replace with");
 			}
+
+			// if(GUI.changed)
+			// {
+			// 	// EditorUtility.SetDirty()
+			// 	EditorUtility.SetDirty (target);
+	
+			// 	serializedObject.ApplyModifiedProperties ();
+	
+			// }
 		}
 	}
 	
