@@ -2,27 +2,56 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Animator))]
 public class Animate : MonoBehaviour {
 
-	public AnimationFloat[] animationFloats;
+	public AnimationFloat[] floats;
+	public AnimationInt[] ints;	
+	public AnimationBool[] bools;
+	public AnimationTrigger[] triggers;
 
 	Animator animator;
 
-	Mover mover;
-
 	void Start(){
 		animator = GetComponent<Animator>();
-		mover = GetComponent<Mover>();
+
+		ListenToEvents();
 	}
 
-	void Update () {
-		// animator.SetFloat("velocity", mover.Velocity);
-		// Debug.Log(mover.currentSpeedPercentage);
+	void Update(){
+		UpdateFloats();
+		UpdateInts();
+		UpdateBools();
+	}
 
-		if(animationFloats != null){
-			for (int i = 0; i < animationFloats.Length; i++) {
-				animationFloats[i].SetFloat(animator);
+	void UpdateFloats(){
+		if(floats != null){
+			for (int i = 0; i < floats.Length; i++){
+				animator.SetFloat(floats[i].name, floats[i].value.Value);
 			}
+		}
+	}
+
+	void UpdateInts(){
+		if(ints != null){
+			for (int i = 0; i < ints.Length; i++){
+				animator.SetFloat(ints[i].name, ints[i].value.Value);
+			}
+		}
+	}
+
+	void UpdateBools(){
+		if(bools != null){
+			for (int i = 0; i < bools.Length; i++){
+				animator.SetBool(bools[i].name, bools[i].value.Value);
+			}
+		}
+	}
+
+	void ListenToEvents(){
+		for (int i = 0; i < triggers.Length; i++)
+		{
+			triggers[i].Initialize(animator);
 		}
 	}
 }

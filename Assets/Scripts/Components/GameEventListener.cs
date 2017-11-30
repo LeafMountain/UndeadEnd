@@ -9,11 +9,11 @@ public class GameEventListener : MonoBehaviour {
 	public UnityEvent onRaised;
 
 	void OnEnable(){
-		Event.AddListener(this);
+		Event.AddListener(Raised);
 	}
 
 	void OnDisable(){
-		Event.RemoveListener(this);
+		Event.RemoveListener(Raised);
 	}
 
 	public void Raised(){
