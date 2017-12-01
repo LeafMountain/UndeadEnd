@@ -38,7 +38,6 @@ GameObject:
   - component: {fileID: 135455998199463238}
   - component: {fileID: 65213927691745824}
   - component: {fileID: 23282597427986984}
-  - component: {fileID: 114755108089509036}
   - component: {fileID: 114093229906250810}
   - component: {fileID: 114425368008407880}
   - component: {fileID: 54549989328380822}
@@ -131,8 +130,8 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
+  m_UseGravity: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -144,7 +143,7 @@ BoxCollider:
   m_GameObject: {fileID: 1592608174353922}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 0.1, y: 0.2, z: 0.3}
   m_Center: {x: 0, y: 0, z: 0.1}
@@ -162,7 +161,18 @@ MonoBehaviour:
   exclusiveTo: []
   OnTriggerEntered:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 114425368008407880}
+        m_MethodName: Collect
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityGameObjectEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   OnTriggerExited:
@@ -311,18 +321,6 @@ MonoBehaviour:
   position: {fileID: 4721979316861966}
   rotation: {fileID: 4721979316861966}
   amount: 1
---- !u!114 &114755108089509036
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1592608174353922}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ef63e4e70ea4544bb81e55d1852bd6e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: -1
 --- !u!114 &114813628041144430
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -354,7 +352,7 @@ SphereCollider:
   m_GameObject: {fileID: 1592608174353922}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.47
   m_Center: {x: 0, y: 0, z: 0}
