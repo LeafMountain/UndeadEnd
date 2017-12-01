@@ -41,32 +41,41 @@ public class Mover : MonoBehaviour {
 		targetSpeed = 0;
 	}
 
-	public void Move(Vector3 input){
+	public void Move(Vector2 input){
+		Vector3 _input = new Vector3(input.x, 0, input.y);
 		Vector3 moveDirection = Vector3.zero;
-		Transform cameraTransform = Camera.main.transform;
 
 		switch (moveRelativeTo) {
 			case(MoveDirection.World):
-				moveDirection = input;
+				moveDirection = _input;
 				break;
 			case(MoveDirection.Camera):
-				Vector3 cameraForward = cameraTransform.forward;
-				cameraForward.y = 0;
-				Vector3 cameraRight = cameraTransform.right;
-				cameraRight.y = 0;
-				Vector3 cameraUp = Camera.main.transform.up;
-				cameraUp.y = 0;
-
-				moveDirection = (cameraForward + cameraUp) * input.z + cameraRight * input.x;
-				moveDirection.Normalize();
+				moveDirection = ConvertToCameraForward(_input);
 				break;
 			case(MoveDirection.Self):
-				moveDirection = transform.forward * input.z + transform.right * input.x;
+				moveDirection = ConvertToSelfForward(_input);
 				break;
 			default:
 				break;
 		}
 
 		controller.Move(moveDirection * normalSpeed);
+	}
+
+	Vector3 ConvertToCameraForward(Vector3 position){
+		Transform cameraTransform = Camera.main.transform;
+		
+		Vector3 cameraForward = cameraTransform.forward;
+		cameraForward.y = 0;
+		Vector3 cameraRight = cameraTransform.right;
+		cameraRight.y = 0;
+		Vector3 cameraUp = cameraTransform.up;
+		cameraUp.y = 0;
+
+		return ((cameraForward + cameraUp) * position.z + cameraRight * position.x).normalized;
+	}
+
+	Vector3 ConvertToSelfForward(Vector3 position){
+		return transform.forward * position.z + transform.right * position.x;
 	}
 }
