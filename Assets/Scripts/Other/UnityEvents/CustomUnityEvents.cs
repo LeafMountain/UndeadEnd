@@ -2,5 +2,9 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-[System.Serializable]
+[Serializable]
 public class UnityGameObjectEvent : UnityEvent<GameObject> { }
+
+[Serializable]
+public class UnityVector2Event : UnityEvent<Vector2> { }
+

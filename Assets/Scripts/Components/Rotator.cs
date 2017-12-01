@@ -4,43 +4,43 @@ using UnityEngine;
 
 public class Rotator : MonoBehaviour {
 
-	Camera viewCamera;
+	public enum RelativeDirection { World, Camera, Self }
+	public RelativeDirection relativeTo;
 
-	void Start(){
-		viewCamera = Camera.main;
-	}
-
-	public void Rotate(Vector3 input, bool globalDirection){
+	public void Rotate(Vector2 input){
+		Vector3 _input = new Vector3(input.x, 0, input.y);
 		Vector3 lookDirection = Vector3.zero;
 
-		if(globalDirection){
-			lookDirection = input;
-		} else {
-			Vector3 cameraForward = viewCamera.transform.forward;
-			// cameraForward.y = 0;
-		
-			Vector3 cameraRight = viewCamera.transform.right;
-			// cameraRight.y = 0;
-
-			lookDirection = cameraForward * input.z + cameraRight * input.x;
-
-			lookDirection.Normalize();
-			lookDirection += transform.position;
+		switch (relativeTo) {
+			case(RelativeDirection.World):
+				lookDirection = _input;
+				break;
+			case(RelativeDirection.Camera):
+				lookDirection = ConvertToCameraForward(_input);
+				break;
+			case(RelativeDirection.Self):
+				lookDirection = ConvertToSelfForward(_input);
+				break;
 		}
 
-		lookDirection.y = transform.position.y;
-
+		lookDirection += transform.position;
 		transform.LookAt(lookDirection);
 	}
 
-	public void Rotate(float angle){
-		Vector3 cameraForward = viewCamera.transform.forward;
+	Vector3 ConvertToCameraForward(Vector3 position){
+		Transform cameraTransform = Camera.main.transform;
+		
+		Vector3 cameraForward = cameraTransform.forward;
 		cameraForward.y = 0;
+		Vector3 cameraRight = cameraTransform.right;
+		cameraRight.y = 0;
+		Vector3 cameraUp = cameraTransform.up;
+		cameraUp.y = 0;
 
-		Quaternion rot = Quaternion.LookRotation(cameraForward, Vector3.up);
-		rot.eulerAngles += Quaternion.Euler(0, angle, 0).eulerAngles;
-		transform.rotation = rot;
-		// rot.eulerAngles = angle;
-		// transform.rotation = rotation;
+		return (cameraForward + cameraUp) * position.z + cameraRight * position.x;
+	}
+
+	Vector3 ConvertToSelfForward(Vector3 position){
+		return transform.forward * position.z + transform.right * position.x;
 	}
 }
