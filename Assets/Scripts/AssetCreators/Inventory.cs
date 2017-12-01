@@ -6,20 +6,22 @@ using UnityEngine;
 public class Inventory : ScriptableObject {
 
 	public int size;
-	public List<Storeable> items = new List<Storeable>();
+	public GameEvent inventoryUpdatedEvent;
 
-	public bool AddItem(Storeable storeable){
-		if(items.Count < size && !items.Contains(storeable)){
-			items.Add(storeable);
-			return true;
+	[Space]	
+	public List<InventoryItem> items = new List<InventoryItem>();
+
+	public void AddItem(InventoryItem item){
+		if(items.Count < size && !items.Contains(item)){
+			items.Add(item);
+			inventoryUpdatedEvent.Raise();
 		}
-
-		return false;
 	}
 
-	public void RemoveItem(Storeable storeable){
-		if(items.Contains(storeable)){
-			items.Remove(storeable);
+	public void RemoveItem(InventoryItem item){
+		if(items.Contains(item)){
+			items.Remove(item);
+			inventoryUpdatedEvent.Raise();			
 		}
 	}
 }

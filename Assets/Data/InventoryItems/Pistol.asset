@@ -8,8 +8,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 778dc11dca50d8945ae371587bf98f5d, type: 3}
-  m_Name: Player1CurrentHealth
+  m_Script: {fileID: 11500000, guid: f78a98e75a3415946aa360d53dddecbc, type: 3}
+  m_Name: Pistol
   m_EditorClassIdentifier: 
-  DeveloperDescription: 
-  Value: 0
+  name: Pistol
+  prefab: {fileID: 1592608174353922, guid: a7db141a90b468a4a81d7ae0e8143bd4, type: 2}
