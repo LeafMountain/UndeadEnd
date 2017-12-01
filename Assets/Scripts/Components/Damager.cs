@@ -7,10 +7,10 @@ public class Damager : MonoBehaviour {
     [SerializeField]
     int damage;
 
-    public void Damage (Collider col)
+    public void Damage (GameObject go)
     {
-        if(col.GetComponent<Health>()){
-            col.GetComponent<Health>().ModifyHealth(damage);
+        if(go.GetComponent<Health>()){
+            go.GetComponent<Health>().ModifyHealth(damage);
         }
     }
 }

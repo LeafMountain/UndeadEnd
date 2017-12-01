@@ -26,6 +26,7 @@ public class Equipper : MonoBehaviour {
 		foreach(GameObject go in currentlyEquipped){
 			Destroy(go);
 		}
+
 		currentlyEquipped.Clear();
 
 		for (int i = 0; i < inventory.items.Count; i++) {
@@ -37,6 +38,14 @@ public class Equipper : MonoBehaviour {
 			go.transform.SetParent(slot);
 			go.transform.position = slot.position;
 			go.transform.rotation = slot.rotation;
+		}
+	}
+
+	public void UseEquipment(){
+		TriggerInteract trigger = currentlyEquipped[0].GetComponent<TriggerInteract>();
+
+		if(trigger){
+			trigger.Interact();
 		}
 	}
 }
