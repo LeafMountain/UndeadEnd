@@ -42,6 +42,10 @@ public class TaggableEditor : Editor {
 
             menu.ShowAsContext();
         };
+
+        listOfTags.drawHeaderCallback = (Rect rect) => {  
+            EditorGUI.LabelField(rect, "Tags");
+        };
     }
 
 	public override void OnInspectorGUI()
