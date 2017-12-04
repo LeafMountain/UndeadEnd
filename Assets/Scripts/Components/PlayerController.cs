@@ -7,6 +7,8 @@ using XInputDotNetPure;
 [RequireComponent(typeof(Mover), typeof(Rotator))]
 public class PlayerController : MonoBehaviour {
 
+	public bool keyboard;
+
 	[SerializeField]
 	public PlayerIndex playerIndex;
 
@@ -23,15 +25,19 @@ public class PlayerController : MonoBehaviour {
 	void Update(){
 		pad = GamePad.GetState(playerIndex);
 
-		Move();
+		if(!keyboard){
+			Move(new Vector2(pad.ThumbSticks.Left.X, pad.ThumbSticks.Left.Y));
+		} else {
+			Move((new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized));
+		}
 		Look();
 		ToggleFlashlight();
 		Fire();
 	}
 
-	void Move(){
+	void Move(Vector2 input){
 		if(moveInput != null){
-			Vector2 input = new Vector2(pad.ThumbSticks.Left.X, pad.ThumbSticks.Left.Y);			
+			// Vector2 input = new Vector2(pad.ThumbSticks.Left.X, pad.ThumbSticks.Left.Y);			
 			moveInput.Invoke(input);
 		}
 	}
