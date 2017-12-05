@@ -7,6 +7,8 @@ using XInputDotNetPure;
 [RequireComponent(typeof(Mover), typeof(Rotator))]
 public class PlayerController : MonoBehaviour {
 
+	public bool keyboard;
+
 	[SerializeField]
 	public PlayerIndex playerIndex;
 
@@ -18,27 +20,36 @@ public class PlayerController : MonoBehaviour {
 
 	GamePadState pad;
 
-	Vector3 lookDirection;
-
 	void Update(){
 		pad = GamePad.GetState(playerIndex);
 
-		Move();
-		Look();
+		if(!keyboard){
+			Move(new Vector2(pad.ThumbSticks.Left.X, pad.ThumbSticks.Left.Y));
+			Fire(pad.Triggers.Right > .1f);			
+			Look(new Vector2(pad.ThumbSticks.Right.X, pad.ThumbSticks.Right.Y));
+		} else {
+			Move((new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized));
+			Fire(Input.GetButton("Fire1"));
+
+			Ray mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+			RaycastHit hit;
+			Physics.Raycast(mouseRay, out hit, Mathf.Infinity);
+			Debug.DrawRay(mouseRay.origin, mouseRay.direction * 100, Color.red);
+			Vector2 lookDir = new Vector2(hit.point.x - transform.position.x, hit.point.z - transform.position.z).normalized;
+			Look(lookDir);
+		}
+
 		ToggleFlashlight();
-		Fire();
 	}
 
-	void Move(){
+	void Move(Vector2 input){
 		if(moveInput != null){
-			Vector2 input = new Vector2(pad.ThumbSticks.Left.X, pad.ThumbSticks.Left.Y);			
 			moveInput.Invoke(input);
 		}
 	}
 
-	void Look(){
+	void Look(Vector2 input){
 		if(lookInput != null){
-			Vector2 input = new Vector2(pad.ThumbSticks.Right.X, pad.ThumbSticks.Right.Y);
 			lookInput.Invoke(input);
 		}
 	}
@@ -49,8 +60,8 @@ public class PlayerController : MonoBehaviour {
 		}
 	}
 
-	void Fire(){
-		if(fireButton != null && pad.Triggers.Right > .1f){
+	void Fire(bool input){
+		if(fireButton != null && input){
 			fireButton.Invoke();
 		}
 	}
