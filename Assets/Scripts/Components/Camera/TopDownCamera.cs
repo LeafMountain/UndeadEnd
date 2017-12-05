@@ -30,6 +30,8 @@ public class TopDownCamera : MonoBehaviour
     [Range(0, 5)]
     public float height;
 
+    Vector3 targetPosition;
+
     void LateUpdate(){
         AdjustCamera();
     }
