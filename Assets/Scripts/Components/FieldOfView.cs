@@ -116,7 +116,7 @@ public class FieldOfView : MonoBehaviour {
 		viewMesh.triangles = triangles;
 		viewMesh.RecalculateNormals();
 
-		viewPoints.ForEach(point => Debug.DrawLine(origin.position, point, Color.red));
+		// viewPoints.ForEach(point => Debug.DrawLine(origin.position, point, Color.red));
 	}
 
 	ViewCastInfo ViewCast(float globalAngle){
