@@ -20,7 +20,7 @@ public class WanderState : IAIState {
 	}
 	
 	public void Update () {
-		if(DistanceToDestination < controller.agent.stoppingDistance){
+		if(DistanceToDestination < 3){
 			controller.ChangeState(new IdleState(controller));
 		}
 	}

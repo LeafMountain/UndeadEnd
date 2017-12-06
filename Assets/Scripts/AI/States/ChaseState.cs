@@ -16,11 +16,10 @@ public class ChaseState : IAIState {
 	public ChaseState(AIController controller, Vector3 targetPosition){
 		this.controller = controller;
 		controller.agent.SetDestination(targetPosition);
-		Debug.Log(targetPosition);
 	}
 	
 	public void Update () {
-		if(DistanceToDestination < controller.agent.stoppingDistance){
+		if(DistanceToDestination <= 0.1f){
 			controller.ChangeState(new IdleState(controller));
 		}
 	}

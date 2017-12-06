@@ -29,7 +29,7 @@ public class AIController : MonoBehaviour {
 		Ray lookRay = new Ray(transform.position, transform.forward);
 		RaycastHit hit;
 
-		if(Physics.Raycast(lookRay, out hit, 10)){
+		if(Physics.SphereCast(transform.position, 1, transform.forward, out hit, 10)){
 
 			Taggable taggable = hit.transform.GetComponent<Taggable>();
 
