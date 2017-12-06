@@ -13,8 +13,10 @@ ModelImporter:
     400004: mod_wpn_ar01_clip
     2300000: mod_wpn_ar01
     2300002: mod_wpn_ar01_clip
+    2300004: //RootNode
     3300000: mod_wpn_ar01
     3300002: mod_wpn_ar01_clip
+    3300004: //RootNode
     4300000: mod_wpn_ar01_clip
     4300002: mod_wpn_ar01
   externalObjects:
@@ -22,7 +24,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: lambert1
-    second: {fileID: 2100000, guid: ad8874fbb08a1fb4591ae687285c970b, type: 2}
+    second: {fileID: 2100000, guid: 62aa38a5ea2e65c4eb43b3943854f78f, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
