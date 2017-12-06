@@ -15,5 +15,4 @@ MonoBehaviour:
   inventoryUpdatedEvent: {fileID: 11400000, guid: 9e94250ed6f0ad04c8d5be1285baeb22,
     type: 2}
   items:
-  - {fileID: 11400000, guid: f13f3f67179ff7a4a818476270710363, type: 2}
   - {fileID: 11400000, guid: 1c7c13bd68f94024a82d50873308375c, type: 2}
