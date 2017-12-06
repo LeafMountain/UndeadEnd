@@ -424,6 +424,34 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!54 &121810870
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 121810855}
+  serializedVersion: 2
+  m_Mass: 80
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 80
+  m_CollisionDetection: 0
+--- !u!136 &121810871
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 121810855}
+  m_Material: {fileID: 13400000, guid: 003f2de98e226b349a03a5235feb0ffd, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.36
+  m_Height: 1.7762637
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.88813186, z: 0}
 --- !u!1001 &121935504
 Prefab:
   m_ObjectHideFlags: 0
@@ -3634,7 +3662,11 @@ MonoBehaviour:
   smoothing: 0
   pitch: 80
   yaw: 45
+<<<<<<< HEAD
   height: 45
+=======
+  height: 0
+>>>>>>> master
 --- !u!81 &1657139669
 AudioListener:
   m_ObjectHideFlags: 0
@@ -3691,7 +3723,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1657139667}
   m_LocalRotation: {x: 0.5938583, y: 0.29315257, z: -0.2459842, w: 0.7077328}
+<<<<<<< HEAD
   m_LocalPosition: {x: -4.8340545, y: 14.772117, z: -0.95769036}
+=======
+  m_LocalPosition: {x: -2.9922364, y: -1.9631542e-18, z: -14.115874}
+>>>>>>> master
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -4257,7 +4293,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4379180111014244, guid: c539f8f3e7ab4244eadae16e437a533d, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -1.9631542e-18
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 4379180111014244, guid: c539f8f3e7ab4244eadae16e437a533d, type: 2}
       propertyPath: m_LocalPosition.z
@@ -4289,6 +4325,7 @@ Prefab:
       value: 
       objectReference: {fileID: 11400000, guid: 8725d24dc73daff43945396ddc132720,
         type: 2}
+<<<<<<< HEAD
     - target: {fileID: 114628328527363728, guid: c539f8f3e7ab4244eadae16e437a533d,
         type: 2}
       propertyPath: keyboard
@@ -4299,6 +4336,34 @@ Prefab:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+=======
+    - target: {fileID: 143223570802644664, guid: c539f8f3e7ab4244eadae16e437a533d,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114980812997881808, guid: c539f8f3e7ab4244eadae16e437a533d,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 143223570802644664, guid: c539f8f3e7ab4244eadae16e437a533d,
+        type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 003f2de98e226b349a03a5235feb0ffd,
+        type: 2}
+    - target: {fileID: 114628328527363728, guid: c539f8f3e7ab4244eadae16e437a533d,
+        type: 2}
+      propertyPath: keyboard
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114942306189593744, guid: c539f8f3e7ab4244eadae16e437a533d,
+        type: 2}
+      propertyPath: moveRelativeTo
+      value: 0
+      objectReference: {fileID: 0}
+>>>>>>> master
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c539f8f3e7ab4244eadae16e437a533d, type: 2}
   m_IsPrefabParent: 0
