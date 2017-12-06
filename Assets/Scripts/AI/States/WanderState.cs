@@ -22,8 +22,6 @@ public class WanderState : IAIState {
 	public void Update () {
 		if(DistanceToDestination < controller.agent.stoppingDistance){
 			controller.ChangeState(new IdleState(controller));
-			// destination = FindPosition();
-			// controller.agent.SetDestination(destination);
 		}
 	}
 
