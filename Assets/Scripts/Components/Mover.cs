@@ -2,43 +2,34 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(CharacterController))]
+[RequireComponent(typeof(Rigidbody))]
 public class Mover : MonoBehaviour {
 
-	public enum MoveDirection { World, Camera, Self }
+	public enum MoveDirection { Camera, World, Self }
 
 	public MoveDirection moveRelativeTo;
 
-	[Range(0.01f, .3f)]
+	[Range(0.01f, 1f)]
 	public float normalSpeed = .1f;
 
-	float currentSpeed;
-	float targetSpeed;
-	float speedSmoothVelocity;
-	float speedSmoothTime = .1f;
-
-	CharacterController controller;
+	// CharacterController controller;
+	Rigidbody rigidbody;
 
 	Vector3 velocity;
-	public float Velocity { get{ return controller.velocity.magnitude; } }
+	public float Velocity { get{ return rigidbody.velocity.magnitude; } }
 
 	[HideInInspector]
-	public float currentSpeedPercentage;
+	public float currentSpeedPercentage;	//Make this into a property
 
-	Vector3 lastPosition;
+	// Vector3 lastPosition;
+	Vector3 moveDirection;
 
 	void Start(){
-		controller = GetComponent<CharacterController>();
+		rigidbody = GetComponent<Rigidbody>();
 	}
 
-	void Update(){
-		velocity = (lastPosition - transform.position);
-		lastPosition = transform.position;
-
-		currentSpeed = Mathf.SmoothDamp(currentSpeed, targetSpeed, ref speedSmoothVelocity, speedSmoothTime);
-		currentSpeedPercentage = currentSpeed / normalSpeed;
-
-		targetSpeed = 0;
+	void FixedUpdate(){
+		rigidbody.MovePosition(transform.position + (moveDirection * normalSpeed));
 	}
 
 	public void Move(Vector2 input){
@@ -46,11 +37,11 @@ public class Mover : MonoBehaviour {
 		Vector3 moveDirection = Vector3.zero;
 
 		switch (moveRelativeTo) {
-			case(MoveDirection.World):
-				moveDirection = _input;
-				break;
 			case(MoveDirection.Camera):
 				moveDirection = ConvertToCameraForward(_input);
+				break;
+			case(MoveDirection.World):
+				moveDirection = _input;
 				break;
 			case(MoveDirection.Self):
 				moveDirection = ConvertToSelfForward(_input);
@@ -59,7 +50,7 @@ public class Mover : MonoBehaviour {
 				break;
 		}
 
-		controller.Move(moveDirection * normalSpeed);
+		this.moveDirection = moveDirection;
 	}
 
 	Vector3 ConvertToCameraForward(Vector3 position){

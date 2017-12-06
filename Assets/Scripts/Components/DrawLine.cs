@@ -6,29 +6,30 @@ using UnityEngine;
 public class DrawLine : MonoBehaviour {
 
 	public Transform origin;
-	public float duration = 0.1f;
+	public ColorVariable color;
+
 	LineRenderer lineRenderer;
 
 	void Start(){
 		lineRenderer = GetComponent<LineRenderer>();
-		lineRenderer.enabled = false;
 
 		if(origin == null){
 			origin = gameObject.transform;
 		}
+
+		Refresh();
 	}
 
-	public void _DrawLine(Vector3 toPosition){
-		lineRenderer.enabled = true;
-		lineRenderer.SetPosition(0, origin.position);
-		lineRenderer.SetPosition(1, toPosition);
-		
-		// Debug.Log(toPosition);
-		StartCoroutine("RemoveLine");
+	public void Refresh(){
+		Refresh(transform.forward * 100);
 	}
 
-	IEnumerator RemoveLine(){
-		yield return new WaitForSeconds(duration);
-		lineRenderer.enabled = false;
+	public void Refresh(Vector3 position){
+		if(color){
+			lineRenderer.startColor = color.color;
+			lineRenderer.endColor = color.color;
+		}
+
+		lineRenderer.SetPosition(1, position);
 	}
 }
