@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour {
 	[SerializeField]
 	public PlayerIndex playerIndex;
 
+	public UnityEvent OnStart;
+
 	public UnityVector2Event moveInput;
 	public UnityVector2Event lookInput;
 
@@ -40,6 +42,7 @@ public class PlayerController : MonoBehaviour {
 		}
 
 		ToggleFlashlight();
+		PauseButton();
 	}
 
 	void Move(Vector2 input){
@@ -63,6 +66,12 @@ public class PlayerController : MonoBehaviour {
 	void Fire(bool input){
 		if(fireButton != null && input){
 			fireButton.Invoke();
+		}
+	}
+
+	void PauseButton(){
+		if(OnStart != null && Input.GetButton("Cancel")) {
+			OnStart.Invoke();
 		}
 	}
 }
