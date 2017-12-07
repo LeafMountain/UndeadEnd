@@ -1,19 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class GlobalPauseState : IGlobalState {
+public class GlobalMenuState : IGlobalState {
 
 	GlobalStateMachine stateMachine;
 
 	public void EnterState(GlobalStateMachine stateMachine){
 		this.stateMachine = stateMachine;
-		Time.timeScale = 0;
-		Debug.Log("Pause");
+		SceneManager.LoadScene(stateMachine.MenuScene.name);
 	}
 
 	public void ExitState(){
-		Time.timeScale = 1;
+
 	}
 
 	public void Update () {

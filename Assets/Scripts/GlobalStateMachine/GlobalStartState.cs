@@ -1,19 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class GlobalPauseState : IGlobalState {
+public class GlobalStartState : IGlobalState {
 
 	GlobalStateMachine stateMachine;
 
 	public void EnterState(GlobalStateMachine stateMachine){
 		this.stateMachine = stateMachine;
-		Time.timeScale = 0;
-		Debug.Log("Pause");
+		Debug.Log("Start state");
+		SceneManager.LoadScene(stateMachine.GameScene.name);
+		stateMachine.EnterPlay();
 	}
 
 	public void ExitState(){
-		Time.timeScale = 1;
+
 	}
 
 	public void Update () {
