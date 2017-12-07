@@ -10,6 +10,8 @@ public class AIController : MonoBehaviour {
 	public NavMeshAgent agent;
 	public Tag targetTag;
 
+	public Vector2 wanderLenghtMinMax = new Vector2(0, 5);
+
 	public void ChangeState(IAIState newState){
 		currentState = newState;
 	}
