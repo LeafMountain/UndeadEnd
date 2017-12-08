@@ -38,14 +38,22 @@ ModelImporter:
     400028: transform6
     400030: transform7
     2300000: pCube4
+    2300002: //RootNode
     3300000: pCube4
+    3300002: //RootNode
     4300000: pCube4
+    4300002: mod_wpn_sg01
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: lambert1
     second: {fileID: 2100000, guid: e9e5747dcfc37ee42a91e486622ce243, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert2
+    second: {fileID: 2100000, guid: 490134bcc16d21947befcacf4d9c337f, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
