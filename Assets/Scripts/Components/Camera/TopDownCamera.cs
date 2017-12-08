@@ -17,10 +17,13 @@ public class TopDownCamera : MonoBehaviour
     [Range(1, 50)]
     public float zoom = 15;
     public Vector2 zoomMinMax = Vector2.zero;
+    public bool stayBehind;     //
+    
 
-    //Smoothing
+    //Smoothing             Not implemented
     public float smoothing;
-    Vector3 currentVelocity;
+    public Vector2 followThreshholdMinMax;
+    Vector3 currentVelocity;    
 
     [Range(0, 90)]
     public float pitch = 80;
@@ -80,10 +83,6 @@ public class TopDownCamera : MonoBehaviour
         Move(new Vector3(input.x, 0, input.y));
     }
 
-    void Test(){
-        
-    }
-
     public void Zoom(float value, bool add = false){
         if(add){
             zoom += value;
@@ -105,11 +104,10 @@ public class TopDownCamera : MonoBehaviour
 
     void ThirdPerson(){
         if(followTarget){
+            //Threshhold
             transform.position = target.position - transform.forward * zoom;
         }
 
-        // Zoom(zoom);
-        // float calculatedYaw = (useTargetRotation) ? yaw + target.transform.rotation.eulerAngles.y : yaw;
         Rotate(pitch, (useTargetRotation) ? target.transform.rotation.eulerAngles.y : yaw);
     }
 
