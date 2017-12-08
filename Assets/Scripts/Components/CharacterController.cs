@@ -2,49 +2,64 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody))]
-public class Mover : MonoBehaviour {
+[RequireComponent(typeof(Rigidbody), typeof(Collider))]
+public class CharacterController : MonoBehaviour {
 
 	public enum MoveDirection { Camera, World, Self }
 
+	//Settings
 	public MoveDirection moveRelativeTo;
-
 	[Range(0.01f, 1f)]
-	public float normalSpeed = .1f;
+	public float speed = .1f;
+	public float stepSize;	//Fix
 
-	// CharacterController controller;
+	//Velocity
+	Vector3 lastPosition;
+	public Vector3 Velocity { get; private set; }
+	public float VelocityMagnitude { get { return Velocity.magnitude; } }
+	public float VelocityMagnitudePercentage { get; private set; }
+
+	//Grounded
+	public bool IsGrounded { get; set; }		//Fix
+
 	Rigidbody rigidbody;
-
-	Vector3 velocity;
-	public float Velocity { get{ return rigidbody.velocity.magnitude; } }
-
-	[HideInInspector]
-	public float currentSpeedPercentage;	//Make this into a property
-
-	// Vector3 lastPosition;
-	Vector3 moveDirection;
+	Vector3 moveDirection;	
 
 	void Start(){
 		rigidbody = GetComponent<Rigidbody>();
 	}
 
 	void FixedUpdate(){
-		rigidbody.MovePosition(transform.position + (moveDirection * normalSpeed));
+		rigidbody.MovePosition(transform.position + (moveDirection * speed));
 	}
 
+	void Update(){
+		lastPosition = transform.position;
+		Velocity = (lastPosition - transform.position);
+	}
+
+	//Move
 	public void Move(Vector2 input){
-		Vector3 _input = new Vector3(input.x, 0, input.y);
+		Move(input, false);
+	}
+
+	public void Move(Vector2 input, bool YtoZ){
+		Vector3 inputToVector3 = (YtoZ) ? new Vector3(input.x, 0, input.y) : new Vector3(input.x, input.y, 0);
+		Move(inputToVector3);
+	}
+
+	public void Move(Vector3 input){
 		Vector3 moveDirection = Vector3.zero;
 
 		switch (moveRelativeTo) {
 			case(MoveDirection.Camera):
-				moveDirection = ConvertToCameraForward(_input);
+				moveDirection = ConvertToCameraForward(input);
 				break;
 			case(MoveDirection.World):
-				moveDirection = _input;
+				moveDirection = input;
 				break;
 			case(MoveDirection.Self):
-				moveDirection = ConvertToSelfForward(_input);
+				moveDirection = ConvertToSelfForward(input);
 				break;
 			default:
 				break;
@@ -53,6 +68,7 @@ public class Mover : MonoBehaviour {
 		this.moveDirection = moveDirection;
 	}
 
+	//Convert
 	Vector3 ConvertToCameraForward(Vector3 position){
 		Transform cameraTransform = Camera.main.transform;
 		

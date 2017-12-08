@@ -16,7 +16,7 @@ public class Gravity : MonoBehaviour {
 	public bool IsGrounded {
 		get {
 			float height = distanceToGround + yOffset;
-			Ray groundCheck = new Ray(controller.bounds.min + Vector3.up * yOffset, Vector3.down);
+			Ray groundCheck = new Ray(transform.position + Vector3.up * yOffset, Vector3.down);
 			return Physics.Raycast(groundCheck, height);
 		}
 	}

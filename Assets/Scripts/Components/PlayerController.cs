@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.Events;
 using XInputDotNetPure;
 
-[RequireComponent(typeof(Mover), typeof(Rotator))]
 public class PlayerController : MonoBehaviour {
 
 	public bool keyboard;
