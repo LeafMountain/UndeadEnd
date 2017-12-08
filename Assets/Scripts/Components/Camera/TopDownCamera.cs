@@ -12,6 +12,7 @@ public class TopDownCamera : MonoBehaviour
     
     [Header("Third-Person Settings")]
     public bool followTarget;
+    public bool useTargetRotation;
     public bool limitZoom;
     [Range(1, 50)]
     public float zoom = 15;
@@ -108,7 +109,8 @@ public class TopDownCamera : MonoBehaviour
         }
 
         // Zoom(zoom);
-        Rotate(pitch, yaw);
+        // float calculatedYaw = (useTargetRotation) ? yaw + target.transform.rotation.eulerAngles.y : yaw;
+        Rotate(pitch, (useTargetRotation) ? target.transform.rotation.eulerAngles.y : yaw);
     }
 
     void FreeMovement(){

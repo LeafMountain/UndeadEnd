@@ -2,40 +2,98 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
 public class AddForce : MonoBehaviour {
 
-	public float force;
+	public enum ForcePosition { Self, Location }
+	public enum ForceUpdate { Once, Continous }
+	public enum RelativeTo { World, Camera, Self }
+
+	public ForceMode mode;
+	public ForcePosition position;
+	public ForceUpdate update;
+	public RelativeTo relativeTo;
+
+	public bool addOnStart;
+
+	public Vector3 force;
 	public Transform location;
 	public float radius;
 
+	Rigidbody rigidbody;
+
 	void Start(){
+		rigidbody = GetComponent<Rigidbody>();
+
 		if(!location){
 			location = transform;
 		}
+
+		if(addOnStart){
+			_AddForce();
+		}
 	}
 
-	public void AddForceAtLocation(){
-		_AddForceAtLocation(transform.position);
+	void Update(){
+		if(update == ForceUpdate.Continous){
+			_AddForce();
+		}
 	}
 
-	public void AddForceAtLocation(Vector3 position){
-		_AddForceAtLocation(position);
+	public void Trigger(){
+		_AddForce();
 	}
 
-	public void AddForceAtLocation(Collider col){
-		_AddForceAtLocation(col.transform.position);
+	void _AddForce(){
+		Vector3 calculatedForce = force;
+
+		switch (relativeTo){
+			case (RelativeTo.Camera) :
+				calculatedForce = ConvertToCameraForward(force);
+				break;
+			case (RelativeTo.Self) :
+				calculatedForce = ConvertToSelfForward(force);
+				break;
+		}
+
+		switch (position) {
+			case (ForcePosition.Self) :
+				rigidbody.AddForce(calculatedForce, mode);
+				break;
+			case (ForcePosition.Location) :
+				// rigidbody.AddForceAtPosition(calculatedForce, location.position, mode);
+				AddForceAtLocation();
+				break;
+		}
 	}
 
-	void _AddForceAtLocation(Vector3 position){
-		Collider[] colliders = Physics.OverlapSphere(position, radius);
+	void AddForceAtLocation(){
+		Collider[] colliders = Physics.OverlapSphere(location.position, radius);
 
 		for (int i = 0; i < colliders.Length; i++)
 		{
-			Rigidbody rigidbody = colliders[i].GetComponent<Rigidbody>();
+			Rigidbody rb = colliders[i].GetComponent<Rigidbody>();
 
-			if(rigidbody){
-				rigidbody.AddForce((position - rigidbody.transform.position) * force, ForceMode.Impulse);
+			if(rb){
+				rb.AddForce(force, mode);
 			}
 		}
+	}
+
+	Vector3 ConvertToCameraForward(Vector3 position){
+		Transform cameraTransform = Camera.main.transform;
+		
+		Vector3 cameraForward = cameraTransform.forward;
+		cameraForward.y = 0;
+		Vector3 cameraRight = cameraTransform.right;
+		cameraRight.y = 0;
+		Vector3 cameraUp = cameraTransform.up;
+		cameraUp.y = 0;
+
+		return ((cameraForward + cameraUp) * position.z + cameraRight * position.x).normalized;
+	}
+
+	Vector3 ConvertToSelfForward(Vector3 position){
+		return transform.forward * position.z + transform.right * position.x;
 	}
 }
