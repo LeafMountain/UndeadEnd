@@ -5,23 +5,15 @@ using UnityEngine;
 public class Instantiator : MonoBehaviour {
 
 	public GameObject instantiatedObject;
-	public Transform position;
-	public Transform rotation;
-	public float amount = 1;
+	public Transform origin;
 
 	void Start(){
-		if(!position){
-			position = transform;
-		}
-
-		if(!rotation){
-			rotation = transform;
+		if(!origin){
+			origin = transform;
 		}
 	}
 
 	public void Instantiate(){
-		for (int i = 0; i < amount; i++) {
-			GameObject.Instantiate(instantiatedObject, position.position, rotation.rotation);
-		}
+		GameObject.Instantiate(instantiatedObject, origin.position, origin.rotation);
 	}
 }
