@@ -1,17 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using XInputDotNetPure;
+using UnityEngine.Events;
 
 public class InputButton : MonoBehaviour {
 
-	public PlayerIndex playerIndex;
-	public GamePadButtons buttons;
+	public string buttonName;
 
-	GamePadState state;
+	public UnityEvent OnButtonDown;
+	public UnityEvent OnButtonStay;
+	public UnityEvent OnButtonUp;
 
 	void Update(){
-		state = GamePad.GetState(playerIndex);
-		Debug.Log(state.DPad.Up);
+		if(Input.GetButtonDown(buttonName)) { OnButtonDown.Invoke(); }
+		if(Input.GetButton(buttonName)) { OnButtonStay.Invoke(); }
+		if(Input.GetButtonUp(buttonName)) { OnButtonUp.Invoke(); }
+		
 	}
 }

@@ -6,8 +6,10 @@ using UnityEngine;
 public class RigidbodyController : MonoBehaviour {
 
 	public enum Direction { Manual, Forward }
+	public enum Mode { Once, Continuous }
 
 	public Direction direction;
+	public Mode mode;
 	public Vector3 velocity;
 	public float speed;
 
@@ -26,6 +28,12 @@ public class RigidbodyController : MonoBehaviour {
 				break;
 			default:
 				break;
+		}
+	}
+
+	void Update(){
+		if(mode == Mode.Continuous){
+			rigidbody.AddForce(velocity * speed, ForceMode.VelocityChange);
 		}
 	}
 
