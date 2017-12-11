@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InputAxis : MonoBehaviour {
-
-
+[System.Serializable]
+public class InputAxis {
+	public string prefix;
 	public string horizontalName;
 	public string verticalName;
 
 	public UnityVector2Event OnInput;
 
-	void Update(){
-		float h = (horizontalName != null && horizontalName != "") ? Input.GetAxisRaw(horizontalName) : 0;
-		float v = (verticalName != null && verticalName != "") ? Input.GetAxisRaw(verticalName) : 0;
+	public void Update(string suffix = ""){
+		float h = (horizontalName != null && horizontalName != "") ? Input.GetAxisRaw(prefix + horizontalName + suffix) : 0;
+		float v = (verticalName != null && verticalName != "" + suffix) ? Input.GetAxisRaw(prefix + verticalName) : 0;
 		
 		OnInput.Invoke(new Vector2(h, v).normalized);
 	}	

@@ -5,9 +5,12 @@ using UnityEngine;
 public class Equipper:MonoBehaviour {
 
     public Inventory inventory; 
+    public StringReference playerSuffix;    
+    public ColorVariable playerColor;
+
+    [Header("Inventory Slots")]
     public Transform slot1; 
-    public Transform slot2; 
-    public ColorVariable playerColor; 
+    public Transform slot2;
 
     List < GameObject > currentlyEquipped = new List < GameObject > (); 
 
@@ -32,24 +35,34 @@ public class Equipper:MonoBehaviour {
 
         for (int i = 0; i < inventory.items.Count; i++) {
             GameObject go = Instantiate(inventory.items[i].prefab); 
-            currentlyEquipped.Add(go); 
+            currentlyEquipped.Add(go);
+            Transform slot;
 
-            Transform slot = (i == 0)?slot1:slot2; 
+            if(i == 0){
+                slot = slot1;
+                DrawLine line = go.GetComponent <DrawLine> ();
+                InputMapper input = go.GetComponent<InputMapper>();
+
+                if (line) {
+                    line.color = playerColor;
+                }
+                
+                if(input && playerSuffix != null){
+                    input.SetSuffix(playerSuffix.Value);
+                }
+
+            } else {
+                slot = slot2;
+            }
 
             go.transform.SetParent(slot); 
             go.transform.position = slot.position; 
             go.transform.rotation = slot.rotation; 
-
-            DrawLine line = go.GetComponent < DrawLine > (); 
-
-            if (line) {
-                line.color = playerColor; 
-            }
         }
     }
 
     public void UseEquipment() {
-        TriggerInteract trigger = currentlyEquipped[0].GetComponent < TriggerInteract > (); 
+        TriggerInteract trigger = currentlyEquipped[0].GetComponent <TriggerInteract>(); 
 
         if (trigger) {
             trigger.Interact(); 

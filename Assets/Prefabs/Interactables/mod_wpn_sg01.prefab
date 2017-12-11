@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 114768778849049954}
   - component: {fileID: 120388033458359286}
   - component: {fileID: 114095389595308280}
+  - component: {fileID: 114110335348289152}
   m_Layer: 0
   m_Name: mod_wpn_sg01
   m_TagString: Untagged
@@ -262,9 +263,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   instantiatedObject: {fileID: 1376910079835240, guid: 8fde21b6ee8473d4fa2db860fdd9e25e,
     type: 2}
-  position: {fileID: 0}
-  rotation: {fileID: 0}
-  amount: 1
+  origin: {fileID: 0}
 --- !u!114 &114095389595308280
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -278,6 +277,47 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   origin: {fileID: 0}
   color: {fileID: 0}
+--- !u!114 &114110335348289152
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1183872390465474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cf6801565b91df4dabfd903b4012cba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  suffix: 
+  axes: []
+  buttons:
+  - buttonName: RightTrigger
+    OnButtonDown:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 114768778849049954}
+          m_MethodName: Trigger
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    OnButtonStay:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    OnButtonUp:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
 --- !u!114 &114380481903323528
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -291,9 +331,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   instantiatedObject: {fileID: 1376910079835240, guid: 8fde21b6ee8473d4fa2db860fdd9e25e,
     type: 2}
-  position: {fileID: 0}
-  rotation: {fileID: 0}
-  amount: 1
+  origin: {fileID: 0}
 --- !u!114 &114579413321103006
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -307,9 +345,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   instantiatedObject: {fileID: 1376910079835240, guid: 8fde21b6ee8473d4fa2db860fdd9e25e,
     type: 2}
-  position: {fileID: 0}
-  rotation: {fileID: 0}
-  amount: 1
+  origin: {fileID: 0}
 --- !u!114 &114768778849049954
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -395,9 +431,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   instantiatedObject: {fileID: 1376910079835240, guid: 8fde21b6ee8473d4fa2db860fdd9e25e,
     type: 2}
-  position: {fileID: 0}
-  rotation: {fileID: 0}
-  amount: 1
+  origin: {fileID: 0}
 --- !u!114 &114904233357242156
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -411,9 +445,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   instantiatedObject: {fileID: 1376910079835240, guid: 8fde21b6ee8473d4fa2db860fdd9e25e,
     type: 2}
-  position: {fileID: 0}
-  rotation: {fileID: 0}
-  amount: 1
+  origin: {fileID: 0}
 --- !u!114 &114920631089429148
 MonoBehaviour:
   m_ObjectHideFlags: 1

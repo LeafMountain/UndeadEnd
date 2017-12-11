@@ -8,14 +8,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 509e00506b62b1a47a7dc0936fd9c732, type: 3}
-  m_Name: test
+  m_Script: {fileID: 11500000, guid: 7e6862c9f516b2249bdf74596a359256, type: 3}
+  m_Name: SuffixPlayer1
   m_EditorClassIdentifier: 
-  useMouse: 0
-  horizontalMove: 
-  verticalMove: 
-  horizontalLook: 
-  verticalLook: 
-  shoot: 
-  toggleFlashlight: 
-  interact: 
+  DeveloperDescription: 
+  Value: 
