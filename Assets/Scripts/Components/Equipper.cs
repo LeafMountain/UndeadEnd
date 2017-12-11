@@ -41,7 +41,6 @@ public class Equipper:MonoBehaviour {
                     DrawLine line = go.GetComponent <DrawLine>();
 
                     if (line) {
-                        // line.Toggle();
                         line.color = playerColor;
                     }
                     
