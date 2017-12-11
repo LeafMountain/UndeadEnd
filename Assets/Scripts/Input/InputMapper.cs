@@ -7,6 +7,13 @@ public class InputMapper : MonoBehaviour {
 	public InputAxis[] axes;
 	public InputButton[] buttons;
 
+	void Start(){
+		if(suffix == null){
+			suffix = new StringReference();
+			SetSuffix("");
+		}
+	}
+
 	void Update(){
 		for (int i = 0; i < axes.Length; i++){
 			axes[i].Update(suffix.Value);
@@ -19,7 +26,7 @@ public class InputMapper : MonoBehaviour {
 
 	public void SetSuffix(string suffix){
 		this.suffix.useConstant = true;
-		this.suffix.Value = suffix;
+		this.suffix.constantValue = suffix;
 	}
 
 	public void SetSuffix(StringReference suffix){

@@ -11,12 +11,5 @@ public class StringReference {
 		get {
 			return useConstant ? constantValue : variable.Value;
 		}
-		set {
-			if(useConstant){
-				constantValue = value;
-			} else {
-				variable.SetValue(value);
-			}
-		}
 	}
 }
