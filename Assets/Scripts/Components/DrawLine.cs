@@ -12,6 +12,7 @@ public class DrawLine : MonoBehaviour {
 
 	void Start(){
 		lineRenderer = GetComponent<LineRenderer>();
+		// Toggle(false);
 
 		if(origin == null){
 			origin = gameObject.transform;
@@ -21,7 +22,7 @@ public class DrawLine : MonoBehaviour {
 	}
 
 	public void Refresh(){
-		Refresh(transform.forward * 100);
+		Refresh(origin.transform.position + Vector3.forward * 50);
 	}
 
 	public void Refresh(Vector3 position){
@@ -30,6 +31,15 @@ public class DrawLine : MonoBehaviour {
 			lineRenderer.endColor = color.color;
 		}
 
+		Toggle(true);
 		lineRenderer.SetPosition(1, position);
+	}
+
+	public void Toggle(){
+		lineRenderer.enabled = !lineRenderer.enabled;
+	}
+
+	public void Toggle(bool on){
+		lineRenderer.enabled = on;
 	}
 }

@@ -9,16 +9,11 @@ public class Equipper:MonoBehaviour {
     public ColorVariable playerColor;
 
     [Header("Inventory Slots")]
-    public Transform slot1; 
-    public Transform slot2;
+    public Transform[] slots;
 
-    List < GameObject > currentlyEquipped = new List < GameObject > (); 
+    List <GameObject> currentlyEquipped = new List < GameObject > (); 
 
     void OnEnable() {
-        if ( ! slot1) {
-            slot1 = transform; 
-        }
-
         Refresh(); 
     }
 
@@ -33,31 +28,37 @@ public class Equipper:MonoBehaviour {
 
         currentlyEquipped.Clear(); 
 
-        for (int i = 0; i < inventory.items.Count; i++) {
-            GameObject go = Instantiate(inventory.items[i].prefab); 
-            currentlyEquipped.Add(go);
-            Transform slot;
+        for (int i = 0; i < slots.Length; i++) {
 
-            if(i == 0){
-                slot = slot1;
-                DrawLine line = go.GetComponent <DrawLine> ();
+            if(inventory.items.Count > i){
+                GameObject go = Instantiate(inventory.items[i].prefab);
+                currentlyEquipped.Add(go);
+                Transform slot = slots[i];
                 InputMapper input = go.GetComponent<InputMapper>();
-
-                if (line) {
-                    line.color = playerColor;
-                }
                 
-                if(input && playerSuffix != null){
-                    input.SetSuffix(playerSuffix.Value);
+
+                if(i == 0){
+                    DrawLine line = go.GetComponent <DrawLine>();
+
+                    if (line) {
+                        // line.Toggle();
+                        line.color = playerColor;
+                    }
+                    
+                    if(input && playerSuffix != null){
+                        input.SetSuffix(playerSuffix.Value);
+                    }
+                } else {
+                    if(input){
+                        input.enabled = false;
+                    }
                 }
 
-            } else {
-                slot = slot2;
+                go.transform.SetParent(slot); 
+                go.transform.position = slot.position; 
+                go.transform.rotation = slot.rotation; 
             }
-
-            go.transform.SetParent(slot); 
-            go.transform.position = slot.position; 
-            go.transform.rotation = slot.rotation; 
+            
         }
     }
 
