@@ -6,6 +6,7 @@ public class Rotator : MonoBehaviour {
 
 	public enum RelativeDirection { World, Camera, Self }
 	public RelativeDirection relativeTo;
+	public bool add;
 
 	public void Rotate(Vector2 input){
 		Vector3 _input = new Vector3(input.x, 0, input.y);
@@ -25,6 +26,15 @@ public class Rotator : MonoBehaviour {
 
 		lookDirection += transform.position;
 		transform.LookAt(lookDirection);
+	}
+
+	public void SetRotation(float pitch, float yaw, float roll){
+		SetRotation(Quaternion.Euler(pitch, yaw, roll));
+	}
+
+	public void SetRotation(Quaternion rotation){
+		Quaternion newRotation = (add) ? Quaternion.Euler(transform.rotation.eulerAngles + rotation.eulerAngles) : rotation;
+		transform.rotation = newRotation;
 	}
 
 	Vector3 ConvertToCameraForward(Vector3 position){

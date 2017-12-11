@@ -16,7 +16,7 @@ public class WanderState : IAIState {
 	public WanderState(AIController controller){
 		this.controller = controller;
 		destination = FindPosition();
-		controller.agent.SetDestination(destination);		
+		controller.agent.SetDestination(destination);
 	}
 	
 	public void Update () {
@@ -28,7 +28,7 @@ public class WanderState : IAIState {
 	Vector3 FindPosition(){
 		float randomX = Random.Range(-1f, 1f);
 		float randomZ = Random.Range(-1f, 1f);
-		float randomDistance = Random.Range(1, 5);		
+		float randomDistance = Random.Range(controller.wanderLenghtMinMax.x, controller.wanderLenghtMinMax.y);
 
 		Vector3 randomDirection = new Vector3(randomX, 0, randomZ);
 

@@ -50,6 +50,7 @@ public class TopDownCameraEditor : Editor {
 	void ThirdPersonEditor(){
 		if(tar.followTarget = EditorGUILayout.Toggle("Follow Target", tar.followTarget)){
 			tar.target = (Transform)EditorGUILayout.ObjectField("Target", tar.target, typeof(Transform), true);
+			tar.useTargetRotation = EditorGUILayout.Toggle("Follow Rotation", tar.useTargetRotation);
 		}
 		
 		tar.zoom = EditorGUILayout.Slider("Zoom", tar.zoom, 0, 50);		
