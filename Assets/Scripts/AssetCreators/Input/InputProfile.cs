@@ -5,16 +5,30 @@ using UnityEngine;
 [CreateAssetMenu(menuName ="Input/Profile")]
 public class InputProfile : ScriptableObject {
 
+	public int playerIndex;
 	public bool useMouse;
 
-	public string horizontalMove;
-	public string verticalMove;
+	[Header("Axes")]
+	[SerializeField]
+	string horizontalMove;
+	[SerializeField]	
+	string verticalMove;
 
-	public string horizontalLook;
-	public string verticalLook;
+	[Space]
+	[SerializeField]
+	string horizontalLook;
+	[SerializeField]
+	string verticalLook;
 
-	public string shoot;
-	public string toggleFlashlight;
+	[Header("Buttons")]
+	[SerializeField]
+	string shoot;
 
-	public string interact;
+	public string HorizontalMove { get { return horizontalMove; } }
+	public string VerticalMove { get{ return verticalMove; } }
+
+	public string HorizontalLook { get { return horizontalLook; } }
+	public string VerticalLook { get { return verticalLook; } }
+
+	public string Shoot { get { return shoot; } }
 }

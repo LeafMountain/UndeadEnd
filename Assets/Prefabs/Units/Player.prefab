@@ -38,7 +38,6 @@ GameObject:
   - component: {fileID: 23372931449911520}
   - component: {fileID: 114731297977544326}
   - component: {fileID: 114942306189593744}
-  - component: {fileID: 114628328527363728}
   - component: {fileID: 114637073676522876}
   - component: {fileID: 114831078319685612}
   - component: {fileID: 95325063991461770}
@@ -47,6 +46,7 @@ GameObject:
   - component: {fileID: 54294898084145670}
   - component: {fileID: 136756151097549516}
   - component: {fileID: 114850572020934568}
+  - component: {fileID: 114515448556455402}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -138,7 +138,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1146904742983320}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.9922364, y: 2.5, z: 0.88412607}
+  m_LocalPosition: {x: -1.0153476, y: -6.4934708e-18, z: 2.9243991}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4041438899756332}
@@ -399,9 +399,114 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventory: {fileID: 11400000, guid: 8725d24dc73daff43945396ddc132720, type: 2}
+  playerSuffix:
+    useConstant: 1
+    constantValue: 
+    variable: {fileID: 0}
+  playerColor: {fileID: 11400000, guid: 13d93af7abd78ea40bde94a772a9234d, type: 2}
   slot1: {fileID: 4446771165021668}
   slot2: {fileID: 4839284431282460}
-  playerColor: {fileID: 11400000, guid: 13d93af7abd78ea40bde94a772a9234d, type: 2}
+--- !u!114 &114515448556455402
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1146904742983320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cf6801565b91df4dabfd903b4012cba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  suffix:
+    useConstant: 1
+    constantValue: 
+    variable: {fileID: 0}
+  axes:
+  - prefix: Left
+    horizontalName: Horizontal
+    verticalName: Vertical
+    OnInput:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 114942306189593744}
+          m_MethodName: Move
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityVector2Event, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+  - prefix: Right
+    horizontalName: Horizontal
+    verticalName: Vertical
+    OnInput:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 114831078319685612}
+          m_MethodName: Rotate
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityVector2Event, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+  - prefix: Mouse
+    horizontalName: ' X'
+    verticalName: ' Y'
+    OnInput:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 114831078319685612}
+          m_MethodName: Rotate
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityVector2Event, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+  buttons:
+  - buttonName: RightTrigger
+    OnButtonDown:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    OnButtonStay:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 114418740817305676}
+          m_MethodName: UseEquipment
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    OnButtonUp:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
 --- !u!114 &114580442147808546
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -414,72 +519,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPoint: {x: 0, y: 0, z: 0}
---- !u!114 &114628328527363728
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1146904742983320}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52d847a86757a4f4dac25f67214b63d1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyboard: 1
-  playerIndex: 0
-  moveInput:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 114942306189593744}
-        m_MethodName: Move
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: UnityVector2Event, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  lookInput:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 114831078319685612}
-        m_MethodName: Rotate
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: UnityVector2Event, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  interactButton:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  fireButton:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 114418740817305676}
-        m_MethodName: UseEquipment
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
 --- !u!114 &114637073676522876
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -561,6 +600,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   relativeTo: 1
+  add: 0
 --- !u!114 &114850572020934568
 MonoBehaviour:
   m_ObjectHideFlags: 1
