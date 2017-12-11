@@ -10,12 +10,18 @@ ModelImporter:
     2300000: //RootNode
     3300000: //RootNode
     4300000: mod_env_building02_stairs01
+    4300002: polySurface26
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: lambert1
     second: {fileID: 2100000, guid: 59e36e6216828094fa855c9cb6b8726e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert14
+    second: {fileID: 2100000, guid: 3d0394af9ef74da4aaa9dc30eb6c2cee, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
