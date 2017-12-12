@@ -6,16 +6,26 @@ ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
+    100002: pasted__polySurface38
     400000: //RootNode
+    400002: pasted__polySurface38
     2300000: //RootNode
+    2300002: pasted__polySurface38
     3300000: //RootNode
+    3300002: pasted__polySurface38
     4300000: mod_env_building02_facade_straight02
+    4300002: pasted__polySurface38
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: lambert1
     second: {fileID: 2100000, guid: 59e36e6216828094fa855c9cb6b8726e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pasted__lambert14
+    second: {fileID: 2100000, guid: 3d0394af9ef74da4aaa9dc30eb6c2cee, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

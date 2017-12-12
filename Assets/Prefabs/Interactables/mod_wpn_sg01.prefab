@@ -82,6 +82,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1515713413697984
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4588610741447248}
+  - component: {fileID: 114897281744444038}
+  m_Layer: 0
+  m_Name: ParticleOrigin
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1576102804989560
 GameObject:
   m_ObjectHideFlags: 0
@@ -179,6 +195,19 @@ Transform:
   m_Father: {fileID: 4805121968201126}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 15, z: 0}
+--- !u!4 &4588610741447248
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1515713413697984}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4805121968201126}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4805121968201126
 Transform:
   m_ObjectHideFlags: 1
@@ -194,6 +223,7 @@ Transform:
   - {fileID: 4026799885877982}
   - {fileID: 4285828284611436}
   - {fileID: 4515434963658238}
+  - {fileID: 4588610741447248}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -288,7 +318,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cf6801565b91df4dabfd903b4012cba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  suffix: 
+  suffix:
+    useConstant: 0
+    constantValue: 
+    variable: {fileID: 0}
   axes: []
   buttons:
   - buttonName: RightTrigger
@@ -416,6 +449,28 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 114897281744444038}
+        m_MethodName: Instantiate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &114775551316652364
@@ -430,6 +485,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   instantiatedObject: {fileID: 1376910079835240, guid: 8fde21b6ee8473d4fa2db860fdd9e25e,
+    type: 2}
+  origin: {fileID: 0}
+--- !u!114 &114897281744444038
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1515713413697984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2499824364cbedf4baeea029550acb28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  instantiatedObject: {fileID: 1135162760870262, guid: 40cc480d21752a4419c4fdda7aca4db2,
     type: 2}
   origin: {fileID: 0}
 --- !u!114 &114904233357242156
