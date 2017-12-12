@@ -5,17 +5,15 @@ using UnityEngine;
 public class Equipper:MonoBehaviour {
 
     public Inventory inventory; 
-    public Transform slot1; 
-    public Transform slot2; 
-    public ColorVariable playerColor; 
+    public StringReference playerSuffix;    
+    public ColorVariable playerColor;
 
-    List < GameObject > currentlyEquipped = new List < GameObject > (); 
+    [Header("Inventory Slots")]
+    public Transform[] slots;
+
+    List <GameObject> currentlyEquipped = new List < GameObject > (); 
 
     void OnEnable() {
-        if ( ! slot1) {
-            slot1 = transform; 
-        }
-
         Refresh(); 
     }
 
@@ -30,26 +28,41 @@ public class Equipper:MonoBehaviour {
 
         currentlyEquipped.Clear(); 
 
-        for (int i = 0; i < inventory.items.Count; i++) {
-            GameObject go = Instantiate(inventory.items[i].prefab); 
-            currentlyEquipped.Add(go); 
+        for (int i = 0; i < slots.Length; i++) {
 
-            Transform slot = (i == 0)?slot1:slot2; 
+            if(inventory.items.Count > i){
+                GameObject go = Instantiate(inventory.items[i].prefab);
+                currentlyEquipped.Add(go);
+                Transform slot = slots[i];
+                InputMapper input = go.GetComponent<InputMapper>();
+                
 
-            go.transform.SetParent(slot); 
-            go.transform.position = slot.position; 
-            go.transform.rotation = slot.rotation; 
+                if(i == 0){
+                    DrawLine line = go.GetComponent <DrawLine>();
 
-            DrawLine line = go.GetComponent < DrawLine > (); 
+                    if (line) {
+                        line.color = playerColor;
+                    }
+                    
+                    if(input && playerSuffix != null){
+                        input.SetSuffix(playerSuffix.Value);
+                    }
+                } else {
+                    if(input){
+                        input.enabled = false;
+                    }
+                }
 
-            if (line) {
-                line.color = playerColor; 
+                go.transform.SetParent(slot); 
+                go.transform.position = slot.position; 
+                go.transform.rotation = slot.rotation; 
             }
+            
         }
     }
 
     public void UseEquipment() {
-        TriggerInteract trigger = currentlyEquipped[0].GetComponent < TriggerInteract > (); 
+        TriggerInteract trigger = currentlyEquipped[0].GetComponent <TriggerInteract>(); 
 
         if (trigger) {
             trigger.Interact(); 

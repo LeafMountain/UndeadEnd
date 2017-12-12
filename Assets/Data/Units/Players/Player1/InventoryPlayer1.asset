@@ -11,8 +11,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af427a3ac82fabb4ebf6e0be503e6e94, type: 3}
   m_Name: InventoryPlayer1
   m_EditorClassIdentifier: 
-  size: 2
+  size: 3
   inventoryUpdatedEvent: {fileID: 11400000, guid: 9e94250ed6f0ad04c8d5be1285baeb22,
     type: 2}
   items:
+  - {fileID: 11400000, guid: 1c7c13bd68f94024a82d50873308375c, type: 2}
+  - {fileID: 11400000, guid: dbed8c75bcfb3494aa19d1d9505d782c, type: 2}
   - {fileID: 11400000, guid: f13f3f67179ff7a4a818476270710363, type: 2}
