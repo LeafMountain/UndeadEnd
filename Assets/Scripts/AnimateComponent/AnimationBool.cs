@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AnimationBool : MonoBehaviour {
+[System.Serializable]
+public class AnimationBool {
 
 	public string name;
 	public BoolReference value;

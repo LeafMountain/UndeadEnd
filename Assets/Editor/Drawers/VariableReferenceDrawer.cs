@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-[CustomPropertyDrawer(typeof(FloatReference))]
-public class FloatReferenceDrawer : PropertyDrawer {
+// [CustomPropertyDrawer(typeof(VariableReference<object, InspectorVariable<object>>), true)]
+public class VariableReferenceDrawer : PropertyDrawer {
 
 	private readonly string[] popupOptions = { "Use Constant", "Use Variable" };
 
@@ -47,4 +47,19 @@ public class FloatReferenceDrawer : PropertyDrawer {
 		EditorGUI.EndProperty();
 	}
 }
+
+[CustomPropertyDrawer(typeof(FloatReference))]
+public class FloatReferenceDrawer : VariableReferenceDrawer { }
+
+[CustomPropertyDrawer(typeof(IntReference))]
+public class IntReferenceDrawer : VariableReferenceDrawer { }
+
+[CustomPropertyDrawer(typeof(BoolReference))]
+public class BoolReferenceDrawer : VariableReferenceDrawer { }
+
+[CustomPropertyDrawer(typeof(StringReference))]
+public class StringReferenceDrawer : VariableReferenceDrawer { }
+
+[CustomPropertyDrawer(typeof(ColorReference))]
+public class ColorReferenceDrawer : VariableReferenceDrawer { }
 	
