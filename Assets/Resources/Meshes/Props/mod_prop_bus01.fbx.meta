@@ -6,16 +6,38 @@ ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
+    100002: mod_prop_bus01
+    100004: mod_prop_car01
+    100006: persp1
     400000: //RootNode
+    400002: mod_prop_bus01
+    400004: mod_prop_car01
+    400006: persp1
+    2000000: persp1
     2300000: //RootNode
+    2300002: mod_prop_bus01
+    2300004: mod_prop_car01
     3300000: //RootNode
+    3300002: mod_prop_bus01
+    3300004: mod_prop_car01
     4300000: mod_prop_bus01
+    4300002: mod_prop_car01
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: lambert1
     second: {fileID: 2100000, guid: 269fb0da20ad1624a9d1fdd977312068, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert2
+    second: {fileID: 2100000, guid: c45d638f842c9aa489db784d1dd2a688, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert3
+    second: {fileID: 2100000, guid: c42a587b2cdf3ab47aa2c619ba1a9ae4, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
