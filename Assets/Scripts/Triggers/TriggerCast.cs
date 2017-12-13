@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class TriggerCast : Trigger {
+public class TriggerCast : MonoBehaviour {
 
 	public float length = 1;
 	public Transform origin;
@@ -18,13 +18,13 @@ public class TriggerCast : Trigger {
 
 	}
 
-	void Cast(){
-		Ray ray = new Ray(origin.position, origin.forward);
-		RaycastHit hit;
+	// void Cast(){
+	// 	Ray ray = new Ray(origin.position, origin.forward);
+	// 	RaycastHit hit;
 
-		if(Physics.Raycast(ray, out hit, length)){
-			Raise(hit.transform.gameObject);
-		}
-	}
+	// 	if(Physics.Raycast(ray, out hit, length)){
+	// 		Raise(hit.transform.gameObject);
+	// 	}
+	// }
 	
 }
