@@ -59,6 +59,7 @@ GameObject:
   - component: {fileID: 114626321711564022}
   - component: {fileID: 114010772243495660}
   - component: {fileID: 114073937829691734}
+  - component: {fileID: 114703845737958838}
   m_Layer: 0
   m_Name: pref_wpn_ar01
   m_TagString: Untagged
@@ -311,6 +312,11 @@ MonoBehaviour:
   instantiatedObject: {fileID: 1376910079835240, guid: 8fde21b6ee8473d4fa2db860fdd9e25e,
     type: 2}
   origin: {fileID: 0}
+  OnInstantiated:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityGameObjectEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!114 &114446830868968322
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -325,6 +331,11 @@ MonoBehaviour:
   instantiatedObject: {fileID: 1135162760870262, guid: 40cc480d21752a4419c4fdda7aca4db2,
     type: 2}
   origin: {fileID: 0}
+  OnInstantiated:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityGameObjectEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!114 &114626321711564022
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -338,6 +349,50 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   origin: {fileID: 0}
   color: {fileID: 0}
+--- !u!114 &114703845737958838
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1719410357648130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cf6801565b91df4dabfd903b4012cba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  suffix:
+    useConstant: 0
+    constantValue: 
+    variable: {fileID: 0}
+  axes: []
+  buttons:
+  - buttonName: RightTrigger
+    OnButtonDown:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    OnButtonStay:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 114073937829691734}
+          m_MethodName: Trigger
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    OnButtonUp:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
 --- !u!120 &120862229404963960
 LineRenderer:
   m_ObjectHideFlags: 1
