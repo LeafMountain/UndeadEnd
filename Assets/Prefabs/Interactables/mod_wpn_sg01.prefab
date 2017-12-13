@@ -294,6 +294,11 @@ MonoBehaviour:
   instantiatedObject: {fileID: 1376910079835240, guid: 8fde21b6ee8473d4fa2db860fdd9e25e,
     type: 2}
   origin: {fileID: 0}
+  OnInstantiated:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityGameObjectEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!114 &114095389595308280
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -365,6 +370,11 @@ MonoBehaviour:
   instantiatedObject: {fileID: 1376910079835240, guid: 8fde21b6ee8473d4fa2db860fdd9e25e,
     type: 2}
   origin: {fileID: 0}
+  OnInstantiated:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityGameObjectEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!114 &114579413321103006
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -379,6 +389,11 @@ MonoBehaviour:
   instantiatedObject: {fileID: 1376910079835240, guid: 8fde21b6ee8473d4fa2db860fdd9e25e,
     type: 2}
   origin: {fileID: 0}
+  OnInstantiated:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityGameObjectEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!114 &114768778849049954
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -449,17 +464,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 114897281744444038}
         m_MethodName: Instantiate
         m_Mode: 1
@@ -487,6 +491,11 @@ MonoBehaviour:
   instantiatedObject: {fileID: 1376910079835240, guid: 8fde21b6ee8473d4fa2db860fdd9e25e,
     type: 2}
   origin: {fileID: 0}
+  OnInstantiated:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityGameObjectEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!114 &114897281744444038
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -501,6 +510,11 @@ MonoBehaviour:
   instantiatedObject: {fileID: 1135162760870262, guid: 40cc480d21752a4419c4fdda7aca4db2,
     type: 2}
   origin: {fileID: 0}
+  OnInstantiated:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityGameObjectEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!114 &114904233357242156
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -515,6 +529,11 @@ MonoBehaviour:
   instantiatedObject: {fileID: 1376910079835240, guid: 8fde21b6ee8473d4fa2db860fdd9e25e,
     type: 2}
   origin: {fileID: 0}
+  OnInstantiated:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityGameObjectEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!114 &114920631089429148
 MonoBehaviour:
   m_ObjectHideFlags: 1
