@@ -22,14 +22,22 @@ public class Inventory : ScriptableObject {
 		if(items.Contains(item)){
 			items.Remove(item);
 			inventoryUpdatedEvent.Raise();
+			// return item;
 		}
+
+		// return null;
 	}
 
-	public void RemoveItem(int index){
+	public InventoryItem RemoveItem(int index){
+		InventoryItem item = null;
+		
 		if(items.Count > index){
+			item = items[index];
 			items.RemoveAt(index);
-			inventoryUpdatedEvent.Raise();		
+			inventoryUpdatedEvent.Raise();
 		}
+
+		return item;
 	}
 
 	public void MoveToBack(InventoryItem item){
@@ -38,5 +46,15 @@ public class Inventory : ScriptableObject {
 			items.RemoveAt(0);
 			inventoryUpdatedEvent.Raise();			
 		}
+	}
+
+	public InventoryItem ReplaceItem(InventoryItem newItem, int slot){
+		if(slot > items.Count){
+			return null;
+		}
+
+		InventoryItem oldItem = items[slot];
+		items[slot] = newItem;
+		return oldItem;
 	}
 }

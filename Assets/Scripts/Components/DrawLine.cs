@@ -22,13 +22,13 @@ public class DrawLine : MonoBehaviour {
 	}
 
 	public void Refresh(){
-		Refresh(origin.transform.position + Vector3.forward * 50);
+		Refresh(Vector3.forward * 50);
 	}
 
 	public void Refresh(Vector3 position){
 		if(color){
-			lineRenderer.startColor = color.color;
-			lineRenderer.endColor = color.color;
+			lineRenderer.startColor = color.Value;
+			lineRenderer.endColor = color.Value;
 		}
 
 		Toggle(true);
