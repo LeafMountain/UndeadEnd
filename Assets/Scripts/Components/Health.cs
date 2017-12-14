@@ -25,7 +25,7 @@ public class Health : MonoBehaviour {
         currentHealth.ApplyChange(amount);
 
         if(amount > 0){
-                OnHealed.Invoke();
+            OnHealed.Invoke();
         } else{
             OnDamaged.Invoke();
         }
