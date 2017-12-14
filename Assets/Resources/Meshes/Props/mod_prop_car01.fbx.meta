@@ -39,7 +39,7 @@ ModelImporter:
       name: lambert3
     second: {fileID: 2100000, guid: c42a587b2cdf3ab47aa2c619ba1a9ae4, type: 2}
   materials:
-    importMaterials: 1
+    importMaterials: 0
     materialName: 0
     materialSearch: 1
     materialLocation: 0
