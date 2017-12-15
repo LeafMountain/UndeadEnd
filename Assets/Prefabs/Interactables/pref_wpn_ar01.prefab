@@ -366,7 +366,7 @@ MonoBehaviour:
     variable: {fileID: 0}
   axes: []
   buttons:
-  - buttonName: RightTrigger
+  - buttonName: BumperRight
     OnButtonDown:
       m_PersistentCalls:
         m_Calls: []
