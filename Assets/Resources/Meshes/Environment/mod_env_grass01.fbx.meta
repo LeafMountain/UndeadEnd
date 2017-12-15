@@ -10,14 +10,15 @@ ModelImporter:
     2300000: //RootNode
     3300000: //RootNode
     4300000: Prop_pack_01:mod_prop_curb_inner
+    4300002: mod_env_grass01
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: lambert1
-    second: {fileID: 2100000, guid: 2f73822990d8d3d4bb347db2a6b0b98c, type: 2}
+    second: {fileID: 2100000, guid: a66adda44c2de6a4f820976fd2914ccc, type: 2}
   materials:
-    importMaterials: 1
+    importMaterials: 0
     materialName: 0
     materialSearch: 1
     materialLocation: 0
