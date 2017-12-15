@@ -34,3 +34,7 @@ sysinfo.txt
 *.unitypackage
 Assets/Resources/Meshes/Character/Materials.meta
 Assets/Resources/Meshes/Environment/mod_env_curb_outer_corner.fbm/tex_prop_curb01.psd.meta
+Assets/Resources/Meshes/Character/mod_char_zombie01.fbx.meta
+Assets/Resources/Meshes/Character/mod_char_zombie01.fbx.meta
+*.meta
+Assets/Resources/Meshes/Character/mod_char_zombie01.fbx.meta
