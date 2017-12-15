@@ -36,6 +36,7 @@ public class AIController : MonoBehaviour {
 			Taggable taggable = hit.transform.GetComponent<Taggable>();
 
 			if(taggable && taggable.Contains(targetTag)){
+				Debug.Log("Chasing player");
 				//Chase state
 				ChangeState(new ChaseState(this, taggable.transform.position));
 			}
