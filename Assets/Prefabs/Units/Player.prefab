@@ -78,7 +78,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1466166619700704
 GameObject:
   m_ObjectHideFlags: 0
@@ -116,7 +116,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1814047580643140
 GameObject:
   m_ObjectHideFlags: 0
@@ -709,7 +709,7 @@ MonoBehaviour:
   playerSuffix:
     useConstant: 0
     constantValue: 
-    variable: {fileID: 0}
+    variable: {fileID: 11400000, guid: 912479ada69b1c641b23c3f30481340c, type: 2}
 --- !u!114 &114401583087440392
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -850,7 +850,7 @@ MonoBehaviour:
   playerSuffix:
     useConstant: 0
     constantValue: 
-    variable: {fileID: 0}
+    variable: {fileID: 11400000, guid: 912479ada69b1c641b23c3f30481340c, type: 2}
 --- !u!114 &114580442147808546
 MonoBehaviour:
   m_ObjectHideFlags: 1
