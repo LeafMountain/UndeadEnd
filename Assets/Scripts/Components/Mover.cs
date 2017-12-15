@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(Rigidbody))]
 public class Mover : MonoBehaviour {
@@ -24,8 +25,15 @@ public class Mover : MonoBehaviour {
 	// Vector3 lastPosition;
 	Vector3 moveDirection;
 
+	[SerializeField]
+	public UnityFloatEvent OnVelocity;
+
 	void Start(){
 		rigidbody = GetComponent<Rigidbody>();
+	}
+
+	void Update(){
+		OnVelocity.Invoke(Velocity);
 	}
 
 	void FixedUpdate(){
