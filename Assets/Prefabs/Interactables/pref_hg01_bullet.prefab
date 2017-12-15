@@ -28,7 +28,7 @@ GameObject:
   - component: {fileID: 96341863454632886}
   - component: {fileID: 114110120584247356}
   m_Layer: 0
-  m_Name: pref_bullet
+  m_Name: pref_hg01_bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -195,7 +195,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ef63e4e70ea4544bb81e55d1852bd6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: -1
+  damage: -15
 --- !u!114 &114418862226891420
 MonoBehaviour:
   m_ObjectHideFlags: 1
