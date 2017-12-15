@@ -1,31 +1,116 @@
 fileFormatVersion: 2
-guid: 5424e5a6ea84a0f45882da0b47543a00
-timeCreated: 1511021460
+guid: 00270915198285c478669625dd9dff4d
+timeCreated: 1513337398
 licenseType: Free
 ModelImporter:
-  serializedVersion: 22
+  serializedVersion: 21
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: mod_char_human01
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: lambert1
-    second: {fileID: 2100000, guid: af56555da1a9e4e45aef6e47d929921d, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: lambert2
-    second: {fileID: 2100000, guid: d815aa96a347d3b45b395ceeb1e286c0, type: 2}
+    100000: ankle_LFT_02
+    100002: ankle_RGH_02
+    100004: ball_LFT_01
+    100006: ball_RGH_01
+    100008: clavicle_LFT_01
+    100010: clavicle_RGH_01
+    100012: elbow_LFT_01
+    100014: elbow_RGH_01
+    100016: head_CEN_01
+    100018: head_CEN_02
+    100020: hip_LFT_01
+    100022: hip_RGH_01
+    100024: Human01:mod_char_human01
+    100026: index_LFT_01
+    100028: index_LFT_02
+    100030: index_LFT_03
+    100032: index_RGH_01
+    100034: index_RGH_02
+    100036: index_RGH_03
+    100038: joint1
+    100040: knee_LFT_01
+    100042: knee_RGH_01
+    100044: middle_LFT_01
+    100046: middle_LFT_02
+    100048: middle_RGH_01
+    100050: middle_RGH_02
+    100052: //RootNode
+    100054: neck_CEN_01
+    100056: palm_LFT_01
+    100058: palm_RGH_01
+    100060: root
+    100062: shoulder_LFT_01
+    100064: shoulder_RGH_01
+    100066: spine_CEN_01
+    100068: spine_CEN_02
+    100070: spine_CEN_03
+    100072: thumb_LFT_01
+    100074: thumb_LFT_02
+    100076: thumb_LFT_03
+    100078: thumb_RGH_01
+    100080: thumb_RGH_02
+    100082: thumb_RGH_03
+    100084: toe_LFT_01
+    100086: toe_RGH_01
+    100088: wrist_LFT_01
+    100090: wrist_RGH_01
+    400000: ankle_LFT_02
+    400002: ankle_RGH_02
+    400004: ball_LFT_01
+    400006: ball_RGH_01
+    400008: clavicle_LFT_01
+    400010: clavicle_RGH_01
+    400012: elbow_LFT_01
+    400014: elbow_RGH_01
+    400016: head_CEN_01
+    400018: head_CEN_02
+    400020: hip_LFT_01
+    400022: hip_RGH_01
+    400024: Human01:mod_char_human01
+    400026: index_LFT_01
+    400028: index_LFT_02
+    400030: index_LFT_03
+    400032: index_RGH_01
+    400034: index_RGH_02
+    400036: index_RGH_03
+    400038: joint1
+    400040: knee_LFT_01
+    400042: knee_RGH_01
+    400044: middle_LFT_01
+    400046: middle_LFT_02
+    400048: middle_RGH_01
+    400050: middle_RGH_02
+    400052: //RootNode
+    400054: neck_CEN_01
+    400056: palm_LFT_01
+    400058: palm_RGH_01
+    400060: root
+    400062: shoulder_LFT_01
+    400064: shoulder_RGH_01
+    400066: spine_CEN_01
+    400068: spine_CEN_02
+    400070: spine_CEN_03
+    400072: thumb_LFT_01
+    400074: thumb_LFT_02
+    400076: thumb_LFT_03
+    400078: thumb_RGH_01
+    400080: thumb_RGH_02
+    400082: thumb_RGH_03
+    400084: toe_LFT_01
+    400086: toe_RGH_01
+    400088: wrist_LFT_01
+    400090: wrist_RGH_01
+    4300000: Human01:mod_char_human01
+    7400000: Walk_anim
+    7400002: All_anim
+    7400004: Idle
+    7400006: hit
+    7400008: Gun_aim
+    7400010: shotgun_aim
+    7400012: AK_aim
+    9500000: //RootNode
+    13700000: Human01:mod_char_human01
   materials:
-    importMaterials: 0
+    importMaterials: 1
     materialName: 0
     materialSearch: 1
-    materialLocation: 0
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
@@ -38,7 +123,6 @@ ModelImporter:
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
-    importAnimatedCustomProperties: 0
     animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
@@ -46,7 +130,203 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Walk_anim
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 30
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: All_anim
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 300
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Idle
+      takeName: Take 001
+      firstFrame: 31
+      lastFrame: 61
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: hit
+      takeName: Take 001
+      firstFrame: 61
+      lastFrame: 89
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Gun_aim
+      takeName: Take 001
+      firstFrame: 90
+      lastFrame: 90
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: shotgun_aim
+      takeName: Take 001
+      firstFrame: 121
+      lastFrame: 121
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: AK_aim
+      takeName: Take 001
+      firstFrame: 152
+      lastFrame: 152
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 1
   meshes:
     lODScreenPercentages: []
@@ -92,7 +372,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
