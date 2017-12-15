@@ -1,31 +1,110 @@
 fileFormatVersion: 2
-guid: 1c1552525e84f2f478fa60a601ebfe6c
-timeCreated: 1511361512
+guid: 6820b3d46cc2400478466a1bda89ab8e
+timeCreated: 1513345047
 licenseType: Free
 ModelImporter:
-  serializedVersion: 22
+  serializedVersion: 21
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: mod_char_zombie01
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: lambert2
-    second: {fileID: 2100000, guid: 8bc18375937d46341add16a762ab4219, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: lambert3
-    second: {fileID: 2100000, guid: bebc5c50accfd5f458848685e21859af, type: 2}
+    100000: ankle_LFT_02
+    100002: ankle_RGH_02
+    100004: ball_LFT_01
+    100006: ball_RGH_01
+    100008: clavicle_LFT_01
+    100010: clavicle_RGH_01
+    100012: elbow_LFT_01
+    100014: elbow_RGH_01
+    100016: head_CEN_01
+    100018: head_CEN_02
+    100020: hip_LFT_01
+    100022: hip_RGH_01
+    100024: index_LFT_01
+    100026: index_LFT_02
+    100028: index_LFT_03
+    100030: index_RGH_01
+    100032: index_RGH_02
+    100034: index_RGH_03
+    100036: joint1
+    100038: knee_LFT_01
+    100040: knee_RGH_01
+    100042: middle_LFT_01
+    100044: middle_LFT_02
+    100046: middle_RGH_01
+    100048: middle_RGH_02
+    100050: //RootNode
+    100052: neck_CEN_01
+    100054: palm_LFT_01
+    100056: palm_RGH_01
+    100058: root
+    100060: shoulder_LFT_01
+    100062: shoulder_RGH_01
+    100064: spine_CEN_01
+    100066: spine_CEN_02
+    100068: spine_CEN_03
+    100070: thumb_LFT_01
+    100072: thumb_LFT_02
+    100074: thumb_LFT_03
+    100076: thumb_RGH_01
+    100078: thumb_RGH_02
+    100080: thumb_RGH_03
+    100082: toe_LFT_01
+    100084: toe_RGH_01
+    100086: wrist_LFT_01
+    100088: wrist_RGH_01
+    100090: Zombie:mod_char_zombie01
+    400000: ankle_LFT_02
+    400002: ankle_RGH_02
+    400004: ball_LFT_01
+    400006: ball_RGH_01
+    400008: clavicle_LFT_01
+    400010: clavicle_RGH_01
+    400012: elbow_LFT_01
+    400014: elbow_RGH_01
+    400016: head_CEN_01
+    400018: head_CEN_02
+    400020: hip_LFT_01
+    400022: hip_RGH_01
+    400024: index_LFT_01
+    400026: index_LFT_02
+    400028: index_LFT_03
+    400030: index_RGH_01
+    400032: index_RGH_02
+    400034: index_RGH_03
+    400036: joint1
+    400038: knee_LFT_01
+    400040: knee_RGH_01
+    400042: middle_LFT_01
+    400044: middle_LFT_02
+    400046: middle_RGH_01
+    400048: middle_RGH_02
+    400050: //RootNode
+    400052: neck_CEN_01
+    400054: palm_LFT_01
+    400056: palm_RGH_01
+    400058: root
+    400060: shoulder_LFT_01
+    400062: shoulder_RGH_01
+    400064: spine_CEN_01
+    400066: spine_CEN_02
+    400068: spine_CEN_03
+    400070: thumb_LFT_01
+    400072: thumb_LFT_02
+    400074: thumb_LFT_03
+    400076: thumb_RGH_01
+    400078: thumb_RGH_02
+    400080: thumb_RGH_03
+    400082: toe_LFT_01
+    400084: toe_RGH_01
+    400086: wrist_LFT_01
+    400088: wrist_RGH_01
+    400090: Zombie:mod_char_zombie01
+    4300000: Zombie:mod_char_zombie01
+    7400000: walk
+    9500000: //RootNode
+    13700000: Zombie:mod_char_zombie01
   materials:
-    importMaterials: 0
+    importMaterials: 1
     materialName: 0
     materialSearch: 1
-    materialLocation: 0
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
@@ -38,7 +117,6 @@ ModelImporter:
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
-    importAnimatedCustomProperties: 0
     animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
@@ -46,7 +124,35 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: walk
+      takeName: Take 001
+      firstFrame: 7
+      lastFrame: 31
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 1
   meshes:
     lODScreenPercentages: []
@@ -92,7 +198,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
