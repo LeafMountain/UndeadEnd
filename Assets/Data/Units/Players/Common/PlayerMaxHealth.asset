@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Name: PlayerMaxHealth
   m_EditorClassIdentifier: Assembly-CSharp::FloatVariable
   DeveloperDescription: 
-  Value: 10
+  Value: 100

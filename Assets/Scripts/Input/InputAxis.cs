@@ -12,8 +12,8 @@ public class InputAxis {
 
 	public void Update(string suffix = ""){
 		float h = (horizontalName != null && horizontalName != "") ? Input.GetAxisRaw(prefix + horizontalName + suffix) : 0;
-		float v = (verticalName != null && verticalName != "" + suffix) ? Input.GetAxisRaw(prefix + verticalName) : 0;
+		float v = (verticalName != null && verticalName != "" + suffix) ? Input.GetAxisRaw(prefix + verticalName + suffix) : 0;
 		
-		OnInput.Invoke(new Vector2(h, v).normalized);
+		OnInput.Invoke(new Vector2(h, -v).normalized);
 	}	
 }

@@ -309,7 +309,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2499824364cbedf4baeea029550acb28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  instantiatedObject: {fileID: 1376910079835240, guid: 8fde21b6ee8473d4fa2db860fdd9e25e,
+  instantiatedObject: {fileID: 1376910079835240, guid: 2d89f340ae16b3745b3befa347ff500f,
     type: 2}
   origin: {fileID: 0}
   OnInstantiated:
@@ -366,7 +366,7 @@ MonoBehaviour:
     variable: {fileID: 0}
   axes: []
   buttons:
-  - buttonName: RightTrigger
+  - buttonName: BumperRight
     OnButtonDown:
       m_PersistentCalls:
         m_Calls: []

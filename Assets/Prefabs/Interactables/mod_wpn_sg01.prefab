@@ -291,7 +291,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2499824364cbedf4baeea029550acb28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  instantiatedObject: {fileID: 1376910079835240, guid: 8fde21b6ee8473d4fa2db860fdd9e25e,
+  instantiatedObject: {fileID: 1376910079835240, guid: b009f8b0e0fd826419575e5ad2e6e33f,
     type: 2}
   origin: {fileID: 0}
   OnInstantiated:
@@ -329,7 +329,7 @@ MonoBehaviour:
     variable: {fileID: 0}
   axes: []
   buttons:
-  - buttonName: RightTrigger
+  - buttonName: BumperRight
     OnButtonDown:
       m_PersistentCalls:
         m_Calls:
@@ -367,7 +367,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2499824364cbedf4baeea029550acb28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  instantiatedObject: {fileID: 1376910079835240, guid: 8fde21b6ee8473d4fa2db860fdd9e25e,
+  instantiatedObject: {fileID: 1376910079835240, guid: b009f8b0e0fd826419575e5ad2e6e33f,
     type: 2}
   origin: {fileID: 0}
   OnInstantiated:
@@ -386,7 +386,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2499824364cbedf4baeea029550acb28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  instantiatedObject: {fileID: 1376910079835240, guid: 8fde21b6ee8473d4fa2db860fdd9e25e,
+  instantiatedObject: {fileID: 1376910079835240, guid: b009f8b0e0fd826419575e5ad2e6e33f,
     type: 2}
   origin: {fileID: 0}
   OnInstantiated:
@@ -488,7 +488,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2499824364cbedf4baeea029550acb28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  instantiatedObject: {fileID: 1376910079835240, guid: 8fde21b6ee8473d4fa2db860fdd9e25e,
+  instantiatedObject: {fileID: 1376910079835240, guid: b009f8b0e0fd826419575e5ad2e6e33f,
     type: 2}
   origin: {fileID: 0}
   OnInstantiated:
@@ -526,7 +526,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2499824364cbedf4baeea029550acb28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  instantiatedObject: {fileID: 1376910079835240, guid: 8fde21b6ee8473d4fa2db860fdd9e25e,
+  instantiatedObject: {fileID: 1376910079835240, guid: b009f8b0e0fd826419575e5ad2e6e33f,
     type: 2}
   origin: {fileID: 0}
   OnInstantiated:
