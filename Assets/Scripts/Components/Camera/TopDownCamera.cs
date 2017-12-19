@@ -2,91 +2,101 @@
 using System.Collections;
 
 public class TopDownCamera : MonoBehaviour
-{
-    public enum PointOfView { ThirdPerson, FirstPerson, FreeMovement }
-    public PointOfView pointOfView;
-
-    public Transform target;
-
-    [Space]
-    
-    [Header("Third-Person Settings")]
+{    
+    [Header("Auto Adjust Settings")]
+    public bool enableAuto;
     public bool followTarget;
-    public bool useTargetRotation;
-    public bool limitZoom;
-    [Range(1, 50)]
-    public float zoom = 15;
-    public Vector2 zoomMinMax = Vector2.zero;
-    public bool stayBehind;     //
-    
+    public Transform[] targets;
 
-    //Smoothing             Not implemented
-    public float smoothing;
-    public Vector2 followThreshholdMinMax;
-    Vector3 currentVelocity;    
-
-    [Range(0, 90)]
-    public float pitch = 80;
+    [Header("Orientation Settings")]
     [Range(0, 360)]
-    public float yaw = 45;
+    public float pitch = 0;
+    [Range(0, 360)]
+    public float yaw = 0;
+    [Range(0, 360)]
+    public float roll = 0;
 
-    [Header("First-Person Settings")]
-    [Range(0, 5)]
-    public float height;
+    public Vector3 offset;
 
+    [Header("Zoom Settings")]
+    public bool autoZoom;
+    [Range(0, 50)]
+    public float zoom = 15;
+    public bool limitZoom;    
+    public Vector2 zoomMinMax = Vector2.zero;
+
+    [Header("Smoothing Settings")]
+    public bool enableSmoothing;
+    [Range(0, 1)]
+    public float moveSmoothing = .5f;
+    [Range(0, 1)]    
+    public float zoomSmoothing = .5f;
+    Vector3 currentVelocity;
+
+    Bounds targetsBounds;
     Vector3 targetPosition;
 
     void LateUpdate(){
-        AdjustCamera();
+        if(enableAuto){
+            AutoAdjustCamera();
+        }
+
+        Move(targetPosition);        
     }
 
-    public void AdjustCamera(){
-        switch (pointOfView)
-		{
-			case (TopDownCamera.PointOfView.FirstPerson):
-				FirstPerson();
-				break;
-			case (TopDownCamera.PointOfView.ThirdPerson):
-				ThirdPerson();
-				break;
-			case (TopDownCamera.PointOfView.FreeMovement):
-				FreeMovement();
-				break;
-		}
+    public void AutoAdjustCamera(){
+        if(targets == null || targets.Length == 0){
+            Debug.LogWarning("No target selected");
+            return;
+        }
+
+        targetsBounds = EncapsulateTargets(targets);
+
+        //Move
+        if(followTarget){
+            targetPosition = GetFollowPosition();
+            targetPosition += offset;
+        }
+
+        //Zoom
+        if(autoZoom){
+            // Zoom(targetsBounds.size.x);
+        }
+
+        Rotate(pitch, yaw, roll);
     }
 
-    public void Rotate(float pitch, float yaw, bool add = false){
+    public void Rotate(float pitch, float yaw, float roll, bool add = false){
         if(add){
-            transform.eulerAngles += new Vector3(pitch, yaw, 0);
+            transform.eulerAngles += new Vector3(pitch, yaw, roll);
         } else {
-            transform.eulerAngles = new Vector3(pitch, yaw, 0);            
+            transform.eulerAngles = new Vector3(pitch, yaw, roll);            
         }
     }
 
-    public void Move(Vector3 input){
-        Vector3 forward = new Vector3(transform.forward.x, 0, transform.forward.z).normalized * input.z;
-        Vector3 right = transform.right * input.x;
+    public void Move(Vector3 targetPosition){
+        Move(targetPosition, true);
+    }
 
-        Vector3 moveDir = forward + right;
+    public void Move(Vector3 targetPosition, bool globalPosition){
+        Vector3 newPosition = targetPosition;
+        Vector3 _targetPosition = targetPosition;
 
-        Vector3 moveTo = moveDir;
+        if(!globalPosition){
+            _targetPosition = transform.TransformPoint(_targetPosition);
+        }
+
+        if(enableSmoothing){
+            newPosition = Vector3.SmoothDamp(transform.position, _targetPosition, ref currentVelocity, moveSmoothing);
+        }
         
-        if(moveDir != Vector3.zero){
-            moveTo = Vector3.SmoothDamp(transform.position, transform.position + moveDir, ref currentVelocity, smoothing);
-
-            transform.position = moveTo;
-            // transform.Translate(moveDir, Space.World);
-        }
-    }
-
-    public void Move(Vector2 input){
-        Move(new Vector3(input.x, 0, input.y));
+        transform.position = newPosition;
     }
 
     public void Zoom(float value, bool add = false){
         if(add){
             zoom += value;
-        } else {
+        } else {            
             zoom = value;
         }
 
@@ -94,24 +104,29 @@ public class TopDownCamera : MonoBehaviour
             zoom = Mathf.Clamp(zoom, zoomMinMax.x, zoomMinMax.y);
         }
 
-        transform.position = target.position - transform.forward * zoom;
+                Debug.Log(value);
+
+
+        targetPosition -= transform.forward * zoom;
     }
 
-    void FirstPerson(){
-        transform.position = target.position + transform.up * height;
-        transform.rotation = target.rotation;
+    Vector3 GetFollowPosition(){
+        Vector3 targetPosition = transform.position;
+        
+        if(targets != null && targets.Length > 0){
+            targetPosition = targetsBounds.center;
+        } 
+
+        return targetPosition;
     }
 
-    void ThirdPerson(){
-        if(followTarget){
-            //Threshhold
-            transform.position = target.position - transform.forward * zoom;
+    Bounds EncapsulateTargets(Transform[] targets){
+        Bounds encapsulatedBounds = new Bounds(targets[0].position, Vector3.zero);
+
+        for (int i = 1; i < targets.Length; i++){
+            encapsulatedBounds.Encapsulate(targets[i].position);
         }
 
-        Rotate(pitch, (useTargetRotation) ? target.transform.rotation.eulerAngles.y : yaw);
-    }
-
-    void FreeMovement(){
-
+        return encapsulatedBounds;
     }
 }
