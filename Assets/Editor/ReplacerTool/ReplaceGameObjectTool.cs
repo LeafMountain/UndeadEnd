@@ -51,10 +51,7 @@ public class ReplaceGameObjectTool : EditorWindow {
 
 					newGOs.Add(prefab);
 					
-					// newGo.transform.localScale = scale;
 					UnityEditor.SceneManagement.EditorSceneManager.MarkAllScenesDirty();
-
-					
 				}
 
 				for (int i = 0; i < newGOs.Count; i++){

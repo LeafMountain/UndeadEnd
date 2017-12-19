@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class GameObjectSlot : MonoBehaviour {
 
-	public GameObject gameObject;
+	public GameObject go;
 
 	public void SetGameObject(GameObject go){
 		RemoveGameObject();
-		gameObject = go;
+		this.go = go;
 	}
 
 	public void RemoveGameObject(){
-		if(gameObject != null){
-			Destroy(gameObject);
+		if(go != null){
+			Destroy(go);
 		}
 	}
 }

@@ -11,14 +11,13 @@ public class AnimateEditor : Editor {
 	List<ReorderableList> lists = new List<ReorderableList>();
 
 	private void OnEnable() {
-    
-        CreateList("floats", "name", "value");
-        CreateList("ints", "name", "value");
-        CreateList("bools", "name", "value");
-        CreateList("triggers", "name", "gameEvent");        
+        lists.Add(CreateList("floats", "name", "value"));
+        lists.Add(CreateList("ints", "name", "value"));
+        lists.Add(CreateList("bools", "name", "value"));
+        lists.Add(CreateList("triggers", "name", "gameEvent"));        
     }
 
-    void CreateList(string listName, string property1, string property2){
+    ReorderableList CreateList(string listName, string property1, string property2){
         ReorderableList list = new ReorderableList(serializedObject, serializedObject.FindProperty(listName), true, true, true, true);
 
         list.drawElementCallback = (Rect rect, int index, bool isActive, bool isFocused) => {            
@@ -44,8 +43,13 @@ public class AnimateEditor : Editor {
         list.drawHeaderCallback = (Rect rect) => {  
             EditorGUI.LabelField(rect, listName);
         };
+
+        list.onCanRemoveCallback = (ReorderableList _list) => { 
+            ReorderableList.defaultBehaviours.DoRemoveButton(_list);
+            return _list.count > 1;
+        };
         
-        lists.Add(list);
+        return list;
     }
 
 	public override void OnInspectorGUI()

@@ -1,12 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class TopDownCamera : MonoBehaviour
 {    
     [Header("Auto Adjust Settings")]
     public bool enableAuto;
-    public bool followTarget;
-    public Transform[] targets;
+    public bool followTargets { get { return targets != null && targets.Count > 0; } }
+    public List<Transform> targets = new List<Transform>();
 
     [Header("Orientation Settings")]
     [Range(0, 360)]
@@ -28,9 +29,7 @@ public class TopDownCamera : MonoBehaviour
     [Header("Smoothing Settings")]
     public bool enableSmoothing;
     [Range(0, 1)]
-    public float moveSmoothing = .5f;
-    [Range(0, 1)]    
-    public float zoomSmoothing = .5f;
+    public float smoothing = .5f;
     Vector3 currentVelocity;
 
     Bounds targetsBounds;
@@ -41,11 +40,11 @@ public class TopDownCamera : MonoBehaviour
             AutoAdjustCamera();
         }
 
-        Move(targetPosition);        
+        MoveToPosition();      
     }
 
     public void AutoAdjustCamera(){
-        if(targets == null || targets.Length == 0){
+        if(!followTargets){
             Debug.LogWarning("No target selected");
             return;
         }
@@ -53,14 +52,16 @@ public class TopDownCamera : MonoBehaviour
         targetsBounds = EncapsulateTargets(targets);
 
         //Move
-        if(followTarget){
+        if(followTargets){
             targetPosition = GetFollowPosition();
             targetPosition += offset;
         }
 
         //Zoom
         if(autoZoom){
-            // Zoom(targetsBounds.size.x);
+            float value = targetsBounds.size.x + targetsBounds.size.y;
+            value *= 2;     //Magic number
+            Zoom(value);
         }
 
         Rotate(pitch, yaw, roll);
@@ -80,14 +81,23 @@ public class TopDownCamera : MonoBehaviour
 
     public void Move(Vector3 targetPosition, bool globalPosition){
         Vector3 newPosition = targetPosition;
-        Vector3 _targetPosition = targetPosition;
 
         if(!globalPosition){
-            _targetPosition = transform.TransformPoint(_targetPosition);
+            newPosition = transform.TransformPoint(targetPosition) + transform.position;
         }
 
         if(enableSmoothing){
-            newPosition = Vector3.SmoothDamp(transform.position, _targetPosition, ref currentVelocity, moveSmoothing);
+            newPosition = Vector3.SmoothDamp(transform.position, this.targetPosition, ref currentVelocity, smoothing);
+        }
+
+        targetPosition = newPosition;
+    }
+
+    void MoveToPosition(){
+        Vector3 newPosition = targetPosition;
+
+        if(enableSmoothing){
+            newPosition = Vector3.SmoothDamp(transform.position, this.targetPosition, ref currentVelocity, smoothing);
         }
         
         transform.position = newPosition;
@@ -100,12 +110,9 @@ public class TopDownCamera : MonoBehaviour
             zoom = value;
         }
 
-        if(!limitZoom){
+        if(limitZoom){
             zoom = Mathf.Clamp(zoom, zoomMinMax.x, zoomMinMax.y);
         }
-
-                Debug.Log(value);
-
 
         targetPosition -= transform.forward * zoom;
     }
@@ -113,20 +120,27 @@ public class TopDownCamera : MonoBehaviour
     Vector3 GetFollowPosition(){
         Vector3 targetPosition = transform.position;
         
-        if(targets != null && targets.Length > 0){
+        if(followTargets){
             targetPosition = targetsBounds.center;
         } 
 
         return targetPosition;
     }
 
-    Bounds EncapsulateTargets(Transform[] targets){
+    Bounds EncapsulateTargets(List<Transform> targets){
         Bounds encapsulatedBounds = new Bounds(targets[0].position, Vector3.zero);
 
-        for (int i = 1; i < targets.Length; i++){
-            encapsulatedBounds.Encapsulate(targets[i].position);
+        for (int i = 1; i < targets.Count; i++){
+            if(targets[i]){
+                encapsulatedBounds.Encapsulate(targets[i].position);
+            }
         }
 
         return encapsulatedBounds;
+    }
+
+    void OnDrawGizmos(){
+        Gizmos.color = Color.red;
+        Gizmos.DrawSphere(targetsBounds.center, .5f);
     }
 }
