@@ -14,10 +14,10 @@ public class Mover : MonoBehaviour {
 	public float normalSpeed = .1f;
 
 	// CharacterController controller;
-	Rigidbody rigidbody;
+	Rigidbody rb;
 
 	Vector3 velocity;
-	public float Velocity { get{ return rigidbody.velocity.magnitude; } }
+	public float Velocity { get{ return rb.velocity.magnitude; } }
 
 	[HideInInspector]
 	public float currentSpeedPercentage;	//Make this into a property
@@ -29,7 +29,7 @@ public class Mover : MonoBehaviour {
 	public UnityFloatEvent OnVelocity;
 
 	void Start(){
-		rigidbody = GetComponent<Rigidbody>();
+		rb = GetComponent<Rigidbody>();
 	}
 
 	void Update(){
@@ -37,7 +37,7 @@ public class Mover : MonoBehaviour {
 	}
 
 	void FixedUpdate(){
-		rigidbody.MovePosition(transform.position + (moveDirection * normalSpeed));
+		rb.MovePosition(transform.position + (moveDirection * normalSpeed));
 	}
 
 	public void Move(Vector2 input){

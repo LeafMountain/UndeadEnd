@@ -2,75 +2,120 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using UnityEditorInternal;
 
 [CustomEditor(typeof(TopDownCamera))]
 public class TopDownCameraEditor : Editor {
 	TopDownCamera tar;
+	ReorderableList tars;
+
+	void OnEnable(){
+		tar = (TopDownCamera) target;
+		tars = CreateList("targets", "Targets");
+	}
 
 	public override void OnInspectorGUI(){
-		tar = (TopDownCamera) target;
-
-		tar.pointOfView = (TopDownCamera.PointOfView) EditorGUILayout.EnumPopup("Perspective", tar.pointOfView);
-
-		EditorGUILayout.Separator();
-
-		switch (tar.pointOfView)
-		{
-			case (TopDownCamera.PointOfView.FirstPerson):
-				FirstPersonEditor();
-				break;
-			case (TopDownCamera.PointOfView.ThirdPerson):
-				ThirdPersonEditor();
-				break;
-			case (TopDownCamera.PointOfView.FreeMovement):
-				FreeMovementEditor();
-				break;
-		}
+		serializedObject.Update();
+		AutoSettings();
+		SmoothingSettings();
 
 		if(GUILayout.Button("Update")){
-			tar.AdjustCamera();
+			tar.AutoAdjustCamera();
 		}
 
 		EditorGUILayout.Separator();
 
 		//Default inspector
 		if(GUI.changed){
-			tar.AdjustCamera();
+			// tar.AutoAdjustCamera();
 			Undo.RegisterCompleteObjectUndo(tar, "Undo Camera Edit");
 		}
 
-		// DrawDefaultInspector();
+		serializedObject.ApplyModifiedProperties();
+
+		DrawDefaultInspector();		
 	}
 
-	void FirstPersonEditor(){
-		tar.target = (Transform)EditorGUILayout.ObjectField("Target", tar.target, typeof(Transform), true);
-		tar.height = EditorGUILayout.Slider("Height", tar.yaw, 0, 50);
-	}
+	void AutoSettings(){
+		GUILayout.BeginVertical("Box");
 
-	void ThirdPersonEditor(){
-		if(tar.followTarget = EditorGUILayout.Toggle("Follow Target", tar.followTarget)){
-			tar.target = (Transform)EditorGUILayout.ObjectField("Target", tar.target, typeof(Transform), true);
-			tar.useTargetRotation = EditorGUILayout.Toggle("Follow Rotation", tar.useTargetRotation);
+		tar.enableAuto = EditorGUILayout.ToggleLeft("Auto Adjust Settings", tar.enableAuto, EditorStyles.boldLabel);
+		
+		if(tar.enableAuto){
+			TargetSettings();
+			OrientationSettings();
+			ZoomSettings();
 		}
 		
-		tar.zoom = EditorGUILayout.Slider("Zoom", tar.zoom, 0, 50);		
+		GUILayout.EndHorizontal();		
+	}
+
+	void TargetSettings(){
+		EditorGUILayout.Separator();
+		EditorGUILayout.LabelField("Target Settings", EditorStyles.boldLabel);
+		tars.DoLayoutList();
+	}
+
+	void OrientationSettings(){
+		EditorGUILayout.Separator();
+		EditorGUILayout.LabelField("Orientation Settings", EditorStyles.boldLabel);
+		tar.pitch = EditorGUILayout.Slider("Pitch", tar.pitch, 0, 360);
+		tar.yaw = EditorGUILayout.Slider("Yaw", tar.yaw, 0, 360);
+		tar.roll = EditorGUILayout.Slider("Roll", tar.roll, 0, 360);
+		
+		tar.offset = EditorGUILayout.Vector3Field("Offset", tar.offset);
+	}
+
+	void ZoomSettings(){
+		EditorGUILayout.Separator();
+		EditorGUILayout.LabelField("Zoom Settings", EditorStyles.boldLabel);		
+
+		tar.zoom = EditorGUILayout.Slider("Zoom", tar.zoom, 0, 50);
+
 		if(tar.limitZoom = EditorGUILayout.Toggle("Limit Zoom", tar.limitZoom)){
 			GUILayout.BeginHorizontal();
 			EditorGUILayout.MinMaxSlider("Zoom min max", ref tar.zoomMinMax.x, ref tar.zoomMinMax.y, 0, 50);
 			tar.zoomMinMax.x = EditorGUILayout.FloatField(tar.zoomMinMax.x, GUILayout.Width(23));
 			tar.zoomMinMax.y = EditorGUILayout.FloatField(tar.zoomMinMax.y, GUILayout.Width(23));
 			GUILayout.EndHorizontal();
+		}		
+	}
+
+	void SmoothingSettings(){
+		GUILayout.BeginVertical("Box");
+
+		tar.enableSmoothing = EditorGUILayout.ToggleLeft("Smooth Settings", tar.enableSmoothing, EditorStyles.boldLabel);
+
+		if(tar.enableSmoothing){
+			tar.smoothing = EditorGUILayout.Slider("Value", tar.smoothing, 0, 1);
 		}
-
-		tar.pitch = EditorGUILayout.Slider("Pitch", tar.pitch, 0, 90);
-		tar.yaw = EditorGUILayout.Slider("Yaw", tar.yaw, 0, 360);
+			
+		GUILayout.EndHorizontal();
 	}
 
-	void FreeMovementEditor(){
+	ReorderableList CreateList(string listName, string label){
+        ReorderableList list = new ReorderableList(serializedObject, serializedObject.FindProperty(listName), true, true, true, true);
 
-	}
+        list.drawElementCallback = (Rect rect, int index, bool isActive, bool isFocused) => {            
+            SerializedProperty element = list.serializedProperty.GetArrayElementAtIndex(index);
+            rect.y += 2;
 
-	void UseSmoothing(){
+            EditorGUI.PropertyField(new Rect(rect.x, rect.y, rect.width, EditorGUIUtility.singleLineHeight), element, GUIContent.none);
+        };
 
-	}
+        list.onAddCallback = (ReorderableList _list) => {
+            int index = _list.serializedProperty.arraySize;
+            _list.serializedProperty.arraySize++;
+            _list.index = index;
+            SerializedProperty element = _list.serializedProperty.GetArrayElementAtIndex(index);
+
+            element.objectReferenceValue = null;
+        };
+
+        list.drawHeaderCallback = (Rect rect) => {  
+            EditorGUI.LabelField(rect, label);
+        };
+        
+        return list;
+    }
 }

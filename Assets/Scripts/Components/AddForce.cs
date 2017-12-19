@@ -20,10 +20,10 @@ public class AddForce : MonoBehaviour {
 	public Transform location;
 	public float radius;
 
-	Rigidbody rigidbody;
+	Rigidbody rb;
 
 	void Start(){
-		rigidbody = GetComponent<Rigidbody>();
+		rb = GetComponent<Rigidbody>();
 
 		if(!location){
 			location = transform;
@@ -58,7 +58,7 @@ public class AddForce : MonoBehaviour {
 
 		switch (position) {
 			case (ForcePosition.Self) :
-				rigidbody.AddForce(calculatedForce, mode);
+				rb.AddForce(calculatedForce, mode);
 				break;
 			case (ForcePosition.Location) :
 				// rigidbody.AddForceAtPosition(calculatedForce, location.position, mode);
