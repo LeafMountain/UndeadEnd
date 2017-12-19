@@ -27,13 +27,13 @@ public class TopDownCameraEditor : Editor {
 
 		//Default inspector
 		if(GUI.changed){
-			// tar.AutoAdjustCamera();
+			tar.AutoAdjustCamera();
 			Undo.RegisterCompleteObjectUndo(tar, "Undo Camera Edit");
 		}
 
 		serializedObject.ApplyModifiedProperties();
 
-		DrawDefaultInspector();		
+		// DrawDefaultInspector();
 	}
 
 	void AutoSettings(){
@@ -68,17 +68,20 @@ public class TopDownCameraEditor : Editor {
 
 	void ZoomSettings(){
 		EditorGUILayout.Separator();
-		EditorGUILayout.LabelField("Zoom Settings", EditorStyles.boldLabel);		
 
-		tar.zoom = EditorGUILayout.Slider("Zoom", tar.zoom, 0, 50);
+		tar.autoZoom = EditorGUILayout.ToggleLeft("Adjust Zoom", tar.autoZoom, EditorStyles.boldLabel);
+		
+		if(tar.autoZoom){
+			tar.zoom = EditorGUILayout.Slider("Zoom", tar.zoom, 0, 50);
 
-		if(tar.limitZoom = EditorGUILayout.Toggle("Limit Zoom", tar.limitZoom)){
-			GUILayout.BeginHorizontal();
-			EditorGUILayout.MinMaxSlider("Zoom min max", ref tar.zoomMinMax.x, ref tar.zoomMinMax.y, 0, 50);
-			tar.zoomMinMax.x = EditorGUILayout.FloatField(tar.zoomMinMax.x, GUILayout.Width(23));
-			tar.zoomMinMax.y = EditorGUILayout.FloatField(tar.zoomMinMax.y, GUILayout.Width(23));
-			GUILayout.EndHorizontal();
-		}		
+			if(tar.limitZoom = EditorGUILayout.Toggle("Limit Zoom", tar.limitZoom)){
+				GUILayout.BeginHorizontal();
+				EditorGUILayout.MinMaxSlider("Zoom min max", ref tar.zoomMinMax.x, ref tar.zoomMinMax.y, 0, 50);
+				tar.zoomMinMax.x = EditorGUILayout.FloatField(tar.zoomMinMax.x, GUILayout.Width(23));
+				tar.zoomMinMax.y = EditorGUILayout.FloatField(tar.zoomMinMax.y, GUILayout.Width(23));
+				GUILayout.EndHorizontal();
+			}
+		}
 	}
 
 	void SmoothingSettings(){
