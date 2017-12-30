@@ -22,10 +22,6 @@ public class TopDownCameraEditor : Editor {
 		ToggleFoldOut("Auto Adjust Settings", ref tar.enableAuto, () => AutoSettings());
 		ToggleFoldOut("Smoothing Settings", ref tar.enableSmoothing, () => SmoothingSettings());
 		ToggleFoldOut("Shader Settings", ref tar.enableReplacementShader, () => ShaderSettings());
-		
-		// AutoSettings();
-		// SmoothingSettings();
-		// ShaderSettings();
 
 		if(GUILayout.Button("Update")){
 			tar.AutoAdjustCamera();
@@ -49,7 +45,7 @@ public class TopDownCameraEditor : Editor {
 	void AutoSettings(){
 		TargetSettings();
 		OrientationSettings();
-		ToggleFoldOut("Adjust Zoom", ref tar.autoZoom, () => ZoomSettings());
+		ToggleFoldOut("Adjust Zoom", ref tar.enableZoom, () => ZoomSettings());
 	}
 
 	void TargetSettings(){
@@ -67,7 +63,11 @@ public class TopDownCameraEditor : Editor {
 	}
 
 	void ZoomSettings(){
-		tar.zoom = EditorGUILayout.Slider("Zoom", tar.zoom, 0, 50);
+		tar.encapsulationZoom = EditorGUILayout.Toggle("Encapsulation Zoom", tar.encapsulationZoom);
+		
+		if(!tar.encapsulationZoom){
+			tar.zoom = EditorGUILayout.Slider("Zoom", tar.zoom, 0, 50);
+		}
 
 		if(tar.limitZoom = EditorGUILayout.Toggle("Limit Zoom", tar.limitZoom)){
 			GUILayout.BeginHorizontal();
@@ -75,7 +75,7 @@ public class TopDownCameraEditor : Editor {
 			tar.zoomMinMax.x = EditorGUILayout.FloatField(tar.zoomMinMax.x, GUILayout.Width(23));
 			tar.zoomMinMax.y = EditorGUILayout.FloatField(tar.zoomMinMax.y, GUILayout.Width(23));
 			GUILayout.EndHorizontal();
-		}
+		}		
 	}
 
 	void SmoothingSettings(){
