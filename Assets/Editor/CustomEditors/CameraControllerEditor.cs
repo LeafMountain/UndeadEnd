@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using UnityEditorInternal;
+using UnityEngine.Events;
 
 [CustomEditor(typeof(CameraController))]
 public class TopDownCameraEditor : Editor {
@@ -18,9 +19,13 @@ public class TopDownCameraEditor : Editor {
 
 	public override void OnInspectorGUI(){
 		serializedObject.Update();
-		AutoSettings();
-		SmoothingSettings();
-		ShaderSettings();
+		ToggleFoldOut("Auto Adjust Settings", ref tar.enableAuto, () => AutoSettings());
+		ToggleFoldOut("Smoothing Settings", ref tar.enableSmoothing, () => SmoothingSettings());
+		ToggleFoldOut("Shader Settings", ref tar.enableReplacementShader, () => ShaderSettings());
+		
+		// AutoSettings();
+		// SmoothingSettings();
+		// ShaderSettings();
 
 		if(GUILayout.Button("Update")){
 			tar.AutoAdjustCamera();
@@ -42,27 +47,17 @@ public class TopDownCameraEditor : Editor {
 	}
 
 	void AutoSettings(){
-		GUILayout.BeginVertical("Box");
-
-		tar.enableAuto = EditorGUILayout.ToggleLeft("Auto Adjust Settings", tar.enableAuto, EditorStyles.boldLabel);
-		
-		if(tar.enableAuto){
-			TargetSettings();
-			OrientationSettings();
-			ZoomSettings();
-		}
-		
-		GUILayout.EndHorizontal();		
+		TargetSettings();
+		OrientationSettings();
+		ToggleFoldOut("Adjust Zoom", ref tar.autoZoom, () => ZoomSettings());
 	}
 
 	void TargetSettings(){
-		EditorGUILayout.Separator();
 		EditorGUILayout.LabelField("Target Settings", EditorStyles.boldLabel);
 		tars.DoLayoutList();
 	}
 
 	void OrientationSettings(){
-		EditorGUILayout.Separator();
 		EditorGUILayout.LabelField("Orientation Settings", EditorStyles.boldLabel);
 		tar.pitch = EditorGUILayout.Slider("Pitch", tar.pitch, 0, 360);
 		tar.yaw = EditorGUILayout.Slider("Yaw", tar.yaw, 0, 360);
@@ -72,45 +67,23 @@ public class TopDownCameraEditor : Editor {
 	}
 
 	void ZoomSettings(){
-		EditorGUILayout.Separator();
+		tar.zoom = EditorGUILayout.Slider("Zoom", tar.zoom, 0, 50);
 
-		tar.autoZoom = EditorGUILayout.ToggleLeft("Adjust Zoom", tar.autoZoom, EditorStyles.boldLabel);
-		
-		if(tar.autoZoom){
-			tar.zoom = EditorGUILayout.Slider("Zoom", tar.zoom, 0, 50);
-
-			if(tar.limitZoom = EditorGUILayout.Toggle("Limit Zoom", tar.limitZoom)){
-				GUILayout.BeginHorizontal();
-				EditorGUILayout.MinMaxSlider("Zoom min max", ref tar.zoomMinMax.x, ref tar.zoomMinMax.y, 0, 50);
-				tar.zoomMinMax.x = EditorGUILayout.FloatField(tar.zoomMinMax.x, GUILayout.Width(23));
-				tar.zoomMinMax.y = EditorGUILayout.FloatField(tar.zoomMinMax.y, GUILayout.Width(23));
-				GUILayout.EndHorizontal();
-			}
+		if(tar.limitZoom = EditorGUILayout.Toggle("Limit Zoom", tar.limitZoom)){
+			GUILayout.BeginHorizontal();
+			EditorGUILayout.MinMaxSlider("Zoom min max", ref tar.zoomMinMax.x, ref tar.zoomMinMax.y, 0, 50);
+			tar.zoomMinMax.x = EditorGUILayout.FloatField(tar.zoomMinMax.x, GUILayout.Width(23));
+			tar.zoomMinMax.y = EditorGUILayout.FloatField(tar.zoomMinMax.y, GUILayout.Width(23));
+			GUILayout.EndHorizontal();
 		}
 	}
 
 	void SmoothingSettings(){
-		GUILayout.BeginVertical("Box");
-
-		tar.enableSmoothing = EditorGUILayout.ToggleLeft("Smooth Settings", tar.enableSmoothing, EditorStyles.boldLabel);
-
-		if(tar.enableSmoothing){
-			tar.smoothing = EditorGUILayout.Slider("Value", tar.smoothing, 0, 1);
-		}
-			
-		GUILayout.EndHorizontal();
+		tar.smoothing = EditorGUILayout.Slider("Value", tar.smoothing, 0, 1);
 	}
 
 	void ShaderSettings(){
-		GUILayout.BeginVertical("Box");
-
-		tar.enableReplacementShader = EditorGUILayout.ToggleLeft("Replacement Shader Settings", tar.enableReplacementShader, EditorStyles.boldLabel);
-		
-		if(tar.enableReplacementShader){
-			tar.replacementShader = (Shader)EditorGUILayout.ObjectField("Shader", tar.replacementShader, typeof(Shader), false);
-		}
-		
-		GUILayout.EndHorizontal();	
+		tar.replacementShader = (Shader)EditorGUILayout.ObjectField("Shader", tar.replacementShader, typeof(Shader), false);
 	}
 
 	ReorderableList CreateList(string listName, string label){
@@ -138,4 +111,20 @@ public class TopDownCameraEditor : Editor {
         
         return list;
     }
+
+	bool ToggleFoldOut(string title, ref bool toggle, UnityAction action){
+		// EditorGUILayout.Separator();
+		
+		GUILayout.BeginVertical("Box");
+		toggle = EditorGUILayout.BeginToggleGroup(title, toggle);
+
+		if(toggle){
+			action.Invoke();
+		}
+
+		EditorGUILayout.EndToggleGroup();
+		GUILayout.EndVertical();
+		
+		return toggle;
+	}
 }

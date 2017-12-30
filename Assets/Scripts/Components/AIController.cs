@@ -28,7 +28,6 @@ public class AIController : MonoBehaviour {
 	}
 
 	void Look(){
-		Ray lookRay = new Ray(transform.position, transform.forward);
 		RaycastHit hit;
 
 		if(Physics.SphereCast(transform.position, 1, transform.forward, out hit, 10)){

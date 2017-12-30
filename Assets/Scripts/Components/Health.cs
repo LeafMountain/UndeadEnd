@@ -14,7 +14,8 @@ public class Health : MonoBehaviour {
 
     void Start(){
         if(!currentHealth){
-            currentHealth = new FloatVariable();
+            // currentHealth = new FloatVariable();
+            currentHealth = ScriptableObject.CreateInstance<FloatVariable>();
             currentHealth.name = gameObject.name + " HP";
         }
         currentHealth.SetValue(maxHealth.Value);

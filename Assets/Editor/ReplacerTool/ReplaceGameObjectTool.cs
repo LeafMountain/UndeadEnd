@@ -6,7 +6,7 @@ using UnityEditor;
 public class ReplaceGameObjectTool : EditorWindow {
 
 	GameObject replacer;
-	bool useSelectionScale;
+	bool useSelectionScale = true;
 
 	[MenuItem("Window/Replace")]
 	public static void ShowWindow(){
@@ -17,7 +17,7 @@ public class ReplaceGameObjectTool : EditorWindow {
 		GUILayout.Label("Game Object to replace selection", EditorStyles.boldLabel);
 		GUILayout.Toggle(useSelectionScale, "Use Selections Scale");
 
-		replacer = (GameObject)EditorGUILayout.ObjectField(replacer, typeof(GameObject));
+		replacer = (GameObject)EditorGUILayout.ObjectField(replacer, typeof(GameObject), true);
 
 		if(GUILayout.Button("Replace Selected Game Objects")){
 
