@@ -2,7 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class TopDownCamera : MonoBehaviour
+[RequireComponent(typeof(Camera))]
+public class CameraController : MonoBehaviour
 {    
     [Header("Auto Adjust Settings")]
     public bool enableAuto;
@@ -34,6 +35,20 @@ public class TopDownCamera : MonoBehaviour
 
     Bounds targetsBounds;
     Vector3 targetPosition;
+
+    [Header("Replacement Shader")]
+    public bool enableReplacementShader;
+    public Shader replacementShader;
+
+    Camera cam;
+
+    void Start(){
+        cam = GetComponent<Camera>();
+
+        if(enableReplacementShader){
+            UseReplacementShader();
+        }
+    }
 
     void LateUpdate(){
         if(enableAuto){
@@ -137,6 +152,12 @@ public class TopDownCamera : MonoBehaviour
         }
 
         return encapsulatedBounds;
+    }
+
+    void UseReplacementShader(){
+        if(replacementShader){
+            cam.SetReplacementShader(replacementShader, "");
+        }
     }
 
     void OnDrawGizmos(){

@@ -4,13 +4,15 @@ using UnityEngine;
 using UnityEditor;
 using UnityEditorInternal;
 
-[CustomEditor(typeof(TopDownCamera))]
+[CustomEditor(typeof(CameraController))]
 public class TopDownCameraEditor : Editor {
-	TopDownCamera tar;
+	CameraController tar;
 	ReorderableList tars;
 
+	bool drawDefaultInspector;
+
 	void OnEnable(){
-		tar = (TopDownCamera) target;
+		tar = (CameraController) target;
 		tars = CreateList("targets", "Targets");
 	}
 
@@ -18,6 +20,7 @@ public class TopDownCameraEditor : Editor {
 		serializedObject.Update();
 		AutoSettings();
 		SmoothingSettings();
+		ShaderSettings();
 
 		if(GUILayout.Button("Update")){
 			tar.AutoAdjustCamera();
@@ -33,7 +36,9 @@ public class TopDownCameraEditor : Editor {
 
 		serializedObject.ApplyModifiedProperties();
 
-		// DrawDefaultInspector();
+		if(drawDefaultInspector = EditorGUILayout.ToggleLeft("Draw Default Inspector", drawDefaultInspector, EditorStyles.boldLabel)){
+			DrawDefaultInspector();
+		}
 	}
 
 	void AutoSettings(){
@@ -94,6 +99,18 @@ public class TopDownCameraEditor : Editor {
 		}
 			
 		GUILayout.EndHorizontal();
+	}
+
+	void ShaderSettings(){
+		GUILayout.BeginVertical("Box");
+
+		tar.enableReplacementShader = EditorGUILayout.ToggleLeft("Replacement Shader Settings", tar.enableReplacementShader, EditorStyles.boldLabel);
+		
+		if(tar.enableReplacementShader){
+			tar.replacementShader = (Shader)EditorGUILayout.ObjectField("Shader", tar.replacementShader, typeof(Shader), false);
+		}
+		
+		GUILayout.EndHorizontal();	
 	}
 
 	ReorderableList CreateList(string listName, string label){
