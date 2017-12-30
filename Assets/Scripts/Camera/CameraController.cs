@@ -2,11 +2,12 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class TopDownCamera : MonoBehaviour
+[RequireComponent(typeof(Camera))]
+public class CameraController : MonoBehaviour
 {    
     [Header("Auto Adjust Settings")]
     public bool enableAuto;
-    public bool followTargets { get { return targets != null && targets.Count > 0; } }
+    public bool followTargets { get { return targets != null && targets.Count > 0 && targets[0] != null; } }
     public List<Transform> targets = new List<Transform>();
 
     [Header("Orientation Settings")]
@@ -20,7 +21,8 @@ public class TopDownCamera : MonoBehaviour
     public Vector3 offset;
 
     [Header("Zoom Settings")]
-    public bool autoZoom;
+    public bool enableZoom;
+    public bool encapsulationZoom;
     [Range(0, 50)]
     public float zoom = 15;
     public bool limitZoom;    
@@ -32,15 +34,45 @@ public class TopDownCamera : MonoBehaviour
     public float smoothing = .5f;
     Vector3 currentVelocity;
 
+    //Targets bounds
     Bounds targetsBounds;
+    //The desiered position of the camera
     Vector3 targetPosition;
+
+    [Header("Replacement Shader")]
+    public bool enableReplacementShader;
+    public Shader replacementShader;
+
+    Camera cam;
+
+    void Start(){
+        cam = GetComponent<Camera>();
+
+        if(enableReplacementShader){
+            UseReplacementShader();
+        }
+
+        if(!followTargets){
+            targetPosition = transform.position;
+        }
+    }
 
     void LateUpdate(){
         if(enableAuto){
             AutoAdjustCamera();
         }
 
-        MoveToPosition();      
+        UpdatePosition();
+    }
+
+    void UpdatePosition(){
+        Vector3 newPosition = targetPosition;
+
+        if(enableSmoothing){
+            newPosition = Vector3.SmoothDamp(transform.position, this.targetPosition, ref currentVelocity, smoothing);
+        }
+        
+        transform.position = newPosition;
     }
 
     public void AutoAdjustCamera(){
@@ -48,20 +80,20 @@ public class TopDownCamera : MonoBehaviour
             Debug.LogWarning("No target selected");
             return;
         }
-
-        targetsBounds = EncapsulateTargets(targets);
-
+        
         //Move
-        if(followTargets){
-            targetPosition = GetFollowPosition();
-            targetPosition += offset;
-        }
+        targetsBounds = EncapsulateTargets(targets);
+        targetPosition = GetFollowPosition();
+        targetPosition += offset;
+
 
         //Zoom
-        if(autoZoom){
+        if(encapsulationZoom){
             float value = targetsBounds.size.x + targetsBounds.size.y;
             value *= 2;     //Magic number
             Zoom(value);
+        } else {
+            Zoom(0, true);
         }
 
         Rotate(pitch, yaw, roll);
@@ -91,16 +123,6 @@ public class TopDownCamera : MonoBehaviour
         }
 
         targetPosition = newPosition;
-    }
-
-    void MoveToPosition(){
-        Vector3 newPosition = targetPosition;
-
-        if(enableSmoothing){
-            newPosition = Vector3.SmoothDamp(transform.position, this.targetPosition, ref currentVelocity, smoothing);
-        }
-        
-        transform.position = newPosition;
     }
 
     public void Zoom(float value, bool add = false){
@@ -137,6 +159,12 @@ public class TopDownCamera : MonoBehaviour
         }
 
         return encapsulatedBounds;
+    }
+
+    void UseReplacementShader(){
+        if(replacementShader){
+            cam.SetReplacementShader(replacementShader, "");
+        }
     }
 
     void OnDrawGizmos(){

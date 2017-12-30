@@ -13,10 +13,10 @@ public class RigidbodyController : MonoBehaviour {
 	public Vector3 velocity;
 	public float speed;
 
-	Rigidbody rigidbody;
+	Rigidbody rb;
 
 	void Start(){
-		rigidbody = GetComponent<Rigidbody>();
+		rb = GetComponent<Rigidbody>();
 
 		switch (direction)
 		{
@@ -33,12 +33,12 @@ public class RigidbodyController : MonoBehaviour {
 
 	void Update(){
 		if(mode == Mode.Continuous){
-			rigidbody.AddForce(velocity * speed, ForceMode.VelocityChange);
+			rb.AddForce(velocity * speed, ForceMode.VelocityChange);
 		}
 	}
 
 	public void SetVelocity(Vector3 velocity, float speed){
 		// this.velocity = velocity;
-		rigidbody.AddForce(velocity * speed, ForceMode.VelocityChange);		
+		rb.AddForce(velocity * speed, ForceMode.VelocityChange);		
 	}
 }
