@@ -34,8 +34,16 @@ public class CameraController : MonoBehaviour
     public float smoothing = .5f;
     Vector3 currentVelocity;
 
+    [Header("Line of Sight Correction")]
+    public bool enableLOS;
+
     //Targets bounds
-    Bounds targetsBounds;
+    Bounds targetsBounds {
+        get {
+            return EncapsulateTargets(targets);
+        }
+    }
+
     //The desiered position of the camera
     Vector3 targetPosition;
 
@@ -72,6 +80,8 @@ public class CameraController : MonoBehaviour
             newPosition = Vector3.SmoothDamp(transform.position, this.targetPosition, ref currentVelocity, smoothing);
         }
         
+        LOSCorrection();
+
         transform.position = newPosition;
     }
 
@@ -82,7 +92,7 @@ public class CameraController : MonoBehaviour
         }
         
         //Move
-        targetsBounds = EncapsulateTargets(targets);
+        // targetsBounds = EncapsulateTargets(targets);
         targetPosition = GetFollowPosition();
         targetPosition += offset;
 
@@ -149,6 +159,45 @@ public class CameraController : MonoBehaviour
         return targetPosition;
     }
 
+    
+
+    void UseReplacementShader(){
+        if(replacementShader){
+            cam.SetReplacementShader(replacementShader, "");
+        }
+    }
+
+    void LOSCorrection(){
+        if(enableLOS){
+            Ray ray = new Ray(targetsBounds.center, targetsBounds.center - transform.position);
+            RaycastHit hit;
+
+            Physics.Raycast(ray, out hit, (targetsBounds.center - targetPosition).magnitude);
+
+            targetPosition = Vector3.ClampMagnitude(targetPosition, hit.distance);
+        }
+    }
+
+    void OnDrawGizmos(){
+        Gizmos.color = Color.red;
+        Gizmos.DrawSphere(targetsBounds.center, .5f);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // Stuff --------------------------------------------
+
     Bounds EncapsulateTargets(List<Transform> targets){
         Bounds encapsulatedBounds = new Bounds(targets[0].position, Vector3.zero);
 
@@ -159,16 +208,5 @@ public class CameraController : MonoBehaviour
         }
 
         return encapsulatedBounds;
-    }
-
-    void UseReplacementShader(){
-        if(replacementShader){
-            cam.SetReplacementShader(replacementShader, "");
-        }
-    }
-
-    void OnDrawGizmos(){
-        Gizmos.color = Color.red;
-        Gizmos.DrawSphere(targetsBounds.center, .5f);
     }
 }

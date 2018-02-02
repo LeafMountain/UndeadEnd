@@ -33,7 +33,6 @@ GameObject:
   - component: {fileID: 114108863979073770}
   - component: {fileID: 137205149735588000}
   - component: {fileID: 114690416173735840}
-  - component: {fileID: 114416995967076306}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -335,9 +334,9 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 2
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 2.33
-  m_Range: 5.76
+  m_Color: {r: 0.8088235, g: 0.8180527, b: 1, a: 1}
+  m_Intensity: 1.53
+  m_Range: 5.8
   m_SpotAngle: 79
   m_CookieSize: 10
   m_Shadows:
@@ -373,11 +372,11 @@ Light:
   m_Type: 0
   m_Color: {r: 1, g: 0.93975663, b: 0.60294116, a: 1}
   m_Intensity: 1
-  m_Range: 7.46
+  m_Range: 20
   m_SpotAngle: 73.73092
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 1
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -438,7 +437,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 711507bb263d04945b5286005e06ae31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameObject: {fileID: 0}
+  go: {fileID: 0}
 --- !u!114 &114049426696356708
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -621,7 +620,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 711507bb263d04945b5286005e06ae31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameObject: {fileID: 0}
+  go: {fileID: 0}
 --- !u!114 &114166642272273020
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -719,17 +718,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parent: {fileID: 4631363495414138}
   resetTransform: 1
---- !u!114 &114416995967076306
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1146904742983320}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: faa841fbba5be15498f2af422d8a4596, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114515448556455402
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -988,11 +976,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveRelativeTo: 0
-  normalSpeed: 0.1
+  normalSpeed: 0.08
   currentSpeedPercentage: 0
   OnVelocity:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 114690416173735840}
+        m_MethodName: UpdateFloat
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityFloatEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
 --- !u!114 &114964986249518816

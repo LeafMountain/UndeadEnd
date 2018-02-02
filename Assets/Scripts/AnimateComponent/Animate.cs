@@ -54,4 +54,8 @@ public class Animate : MonoBehaviour {
 			triggers[i].Initialize(animator);
 		}
 	}
+
+	public void UpdateFloat(float value){
+
+	}
 }

@@ -77,4 +77,8 @@ public class Mover : MonoBehaviour {
 	Vector3 ConvertToSelfForward(Vector3 position){
 		return transform.forward * position.z + transform.right * position.x;
 	}
+
+	public void SetSpeed(float speed) {
+		normalSpeed = speed;
+	}
 }
