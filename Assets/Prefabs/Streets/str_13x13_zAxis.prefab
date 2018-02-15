@@ -362,7 +362,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4011957784992098}
   m_Layer: 10
-  m_Name: str_10x10_zAxis
+  m_Name: str_13x13_zAxis
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

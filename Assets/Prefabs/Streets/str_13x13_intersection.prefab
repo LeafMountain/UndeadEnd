@@ -200,7 +200,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4841712178681852}
   m_Layer: 10
-  m_Name: str_10x10_intersection
+  m_Name: str_13x13_intersection
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
